@@ -1,0 +1,12 @@
+Sample Images/
+node_modules/
+.env.*
+.env.build
+next.config.js
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.next/
+
+Keys/
