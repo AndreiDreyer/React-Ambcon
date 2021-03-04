@@ -1,10 +1,14 @@
+import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { CardContent } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
-import ServicesNav from '../../components/ServicesNav'
+import AboutNav from '../../components/AboutNav'
+import ImageCard from '../../components/ImageCard'
 
 const useStyles = makeStyles((theme) => ({
     mainContainer: {
@@ -40,41 +44,52 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
         },
         [theme.breakpoints.up('1024')]: {
-            marginLeft: '25%',
-            marginRight: '25%',
+            marginLeft: '22%',
+            marginRight: '18%',
             
         },
         
     },
     headers: {
-        alignContent: 'center',
+        alignContent: 'left',
         textAlign: 'left',
-        color: 'white',
-        backgroundColor: '#68bd45',
-        paddingLeft: 20,
-        paddingBottom: 20,
+        color: '#5eac3f',
 
         [theme.breakpoints.down('769')]: {
             width: '100%',
         },
         [theme.breakpoints.up('1024')]: {
-            marginLeft: '25%',
-            marginRight: '25%',
+            marginLeft: '22%',
+            marginRight: '18%',
         },
     },
+    textHeaders: {
+        alignContent: 'left',
+        textAlign: 'left',
+        color: '#5eac3f',
+        marginTop: 5,
+
+        [theme.breakpoints.down('769')]: {
+            width: '100%',
+        },
+        
+    },
     content: {
-        float: 'left',
         [theme.breakpoints.down('769')]: {
             width: '100%',
         },
         [theme.breakpoints.up('1024')]: {
-            maxWidth: '60%',
+            float: 'left',
+            maxWidth: '66%',
         },
     },
     listBox: {
+        [theme.breakpoints.down('769')]: {
+            alignSelf: 'center',
+        },
         [theme.breakpoints.up('1024')]: {
             alignSelf: 'right',
-            float: 'right',
+            float: 'left',
             maxWidth: '40%',
         },
     },
@@ -89,10 +104,26 @@ const useStyles = makeStyles((theme) => ({
             marginTop: '11%',
         },
     },
+    text: {
+
+    },
 }));
 
 export default function Services() {
     const classes = useStyles();
+
+    function FormRow() {
+        return (
+          <React.Fragment>
+            <Grid item xs={6}>
+              <ImageCard></ImageCard>
+            </Grid>
+            <Grid item xs={6}>
+            <ImageCard></ImageCard>
+            </Grid>
+          </React.Fragment>
+        );
+      }
 
     return (
         <div className={classes.mainContainer}>
@@ -101,22 +132,28 @@ export default function Services() {
                     <CardMedia
                         className={classes.media}
                         image="./trucking-banner.jpg"
-                        title="Contemplative Reptile"
+                        title="Banner Image"
                         />
                 </Card>
             </div>
             <div className={classes.bodyBlock}>
-                <Typography className={classes.headers} gutterBottom variant="h3" component="h1">
-                    Full Loads
+                <Typography className={classes.headers} variant="h4" component="h1">
+                    Our Team
                 </Typography>
                 <div className={classes.body}>
-                    <CardContent className={classes.content}>
-                    Dovetail provides business analysis services on any new project that is embarked on. Qualified business analysts spend time on site to understand the current processes and future process expectations with the implementation of a new system.
-                    A detailed process review document is generated that documents the expected final outcomes of the project. This document also highlights any potential system or business gaps that must be addressed.
-                    The document is utilised as a checklist to ensure the final deliverable is as per client’s expectations and Dovetail’s commitment.
+                    <CardContent className={classes.content} >
+                        <Grid container spacing={1}>
+                            <Grid container item xs={12} spacing={3}>
+                                <FormRow />
+                            </Grid>
+                            <Grid container item xs={12} spacing={3}>
+                                <FormRow />
+                            </Grid>
+                            
+                        </Grid>
                     </CardContent>
                     <div className={classes.listBox}>
-                        <ServicesNav></ServicesNav>
+                        <AboutNav></AboutNav>
                     </div>
                 </div>
             </div>    
