@@ -40,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
         },
         [theme.breakpoints.up('1024')]: {
-            marginLeft: '25%',
-            marginRight: '25%',
+            marginLeft: '22%',
+            marginRight: '18%',
             
         },
         
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
         alignContent: 'center',
         textAlign: 'left',
         color: 'white',
-        backgroundColor: '#68bd45',
+        backgroundColor: '#5eac3f',
         paddingLeft: 20,
         paddingBottom: 20,
 
@@ -58,8 +58,8 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
         },
         [theme.breakpoints.up('1024')]: {
-            marginLeft: '25%',
-            marginRight: '25%',
+            marginLeft: '22%',
+            marginRight: '18%',
         },
     },
     content: {

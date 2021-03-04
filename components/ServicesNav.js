@@ -8,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
+import TrackChangesIcon from '@material-ui/icons/TrackChanges';
 import { Link } from '@material-ui/core';
 import { useRouter } from 'next/router'
 
@@ -67,7 +68,7 @@ function FolderList() {
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
-                            <BeachAccessIcon />
+                            <TrackChangesIcon />
                         </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Procurement / Facilitation Service" />
