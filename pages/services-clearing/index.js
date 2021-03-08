@@ -62,6 +62,19 @@ const useStyles = makeStyles((theme) => ({
             marginRight: '18%',
         },
     },
+    textHeaders: {
+        alignContent: 'left',
+        textAlign: 'left',
+        color: '#5eac3f',
+
+        [theme.breakpoints.down('769')]: {
+            width: '100%',
+        },
+        
+    },
+    text: {
+
+    },
     content: {
         [theme.breakpoints.down('769')]: {
             width: '100%',
@@ -114,9 +127,12 @@ export default function Services() {
                 </Typography>
                 <div className={classes.body}>
                     <CardContent className={classes.content}>
-                    Dovetail provides business analysis services on any new project that is embarked on. Qualified business analysts spend time on site to understand the current processes and future process expectations with the implementation of a new system.
-                    A detailed process review document is generated that documents the expected final outcomes of the project. This document also highlights any potential system or business gaps that must be addressed.
-                    The document is utilised as a checklist to ensure the final deliverable is as per client’s expectations and Dovetail’s commitment.
+                    <Typography className={classes.textHeaders} gutterBottom variant="h5" component="h1">
+                    Clearing into Zimbabwe
+                    </Typography>
+                    <Typography className={classes.text} paragraph={true} component="h4">
+                    Our clients are currently able to make use of Clearing Agents of their choice. Although we do not insist on our clients making use of any specific clearing houses we do strongly encourage them to make use of reputable operators in the hope there is more control of the clearing process and reduce standing times at the border.
+                    </Typography>
                     </CardContent>
                     <div className={classes.listBox}>
                         <ServicesNav></ServicesNav>
