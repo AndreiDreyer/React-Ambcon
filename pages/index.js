@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     textAlign: "center",
-    paddingBottom: 173,
+    paddingBottom: 377,
     [theme.breakpoints.down(767)]: {
-      paddingBottom: 520,
+      paddingBottom: 723,
     },
     [theme.breakpoints.up("md")]: {
       paddingTop: 173,
