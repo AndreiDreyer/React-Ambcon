@@ -47,12 +47,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "auto",
   },
   footerInfo: {
-    marginLeft: theme.spacing(2),
+    marginLeft: "1rem",
     marginRight: "auto",
   },
   footerIcon: {
     marginLeft: "auto",
-    // marginRight: "auto",
     marginTop: "auto",
     marginBottom: "auto",
   },
@@ -120,7 +119,7 @@ export default function Footer() {
               <EmailIcon className={classes.footerIcon} />
 
               <div className={classes.footerInfo}>
-                <p>info@akjsd.com</p>
+                <p>matt@ambconlogistics.com</p>
               </div>
             </div>
           </div>
