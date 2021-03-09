@@ -98,7 +98,12 @@ const useStyles = makeStyles((theme) => ({
      fontFamily: 'Oswald Regular',
      fontSize: 1,
      marginTop: 0,
-     width: '50%',
+     [theme.breakpoints.down("sm")]: {
+        width: '95%',
+     },
+     [theme.breakpoints.up("md")]: {
+         width: '50%',
+     },
   },
   formHeader: {
     fontFamily: 'Oswald Regular',
