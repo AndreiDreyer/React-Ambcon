@@ -26,7 +26,6 @@ class ReCaptchaComp extends Component {
     console.log(recaptchaToken, "<= your recaptcha token")
   }
   render() {
-      const RECAPTCHA_KEY = ""+process.env.RECAPTCHA_KEY;
       console.log(RECAPTCHA_KEY)
     return (
       <div>
@@ -37,7 +36,7 @@ class ReCaptchaComp extends Component {
             data-badge="inline"
             render="explicit"
             //Add the site key here 
-            sitekey= "6Ld__3YaAAAAACM003tNeDaYsHU2HS2wva9ttgWD"
+            sitekey= {RECAPTCHA_KEY}
             onloadCallback={this.onLoadRecaptcha}
             verifyCallback={this.verifyCallback}
         />
