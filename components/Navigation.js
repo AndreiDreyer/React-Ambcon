@@ -28,9 +28,6 @@ const drawerWidth = 190;
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    [theme.breakpoints.down("sm")]: {
-      width: drawerWidth,
-    },
   },
   appBar: {
     backgroundColor: "white",
@@ -43,6 +40,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     margin: theme.spacing(2),
     width: "100px",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "auto",
+      marginRight: 0,
+      width: 24,
+    },
   },
   navbarLogo: {
     width: "200px",
@@ -53,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
   },
   nested: {
     paddingLeft: theme.spacing(4),
+  },
+  drawer: {
+    width: drawerWidth,
+    minWidth: drawerWidth,
   },
 }));
 
@@ -140,7 +146,7 @@ export default function Navigation() {
             classes={{ paper: classes.drawerPaper }}
             ModalProps={{ keepMounted: true }}
           >
-            <div className={classes.root}>
+            <div className={classes.drawer}>
               <List component="nav" aria-aria-labelledby="nested-list-subheader" className={classes.root}>
                 {navigationItems.map((navItem) => {
                   if (typeof navItem.sublinks !== "undefined") {
