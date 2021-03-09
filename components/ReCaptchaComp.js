@@ -3,45 +3,42 @@ import { ReCaptcha } from 'react-recaptcha-google';
 import scriptLoader from "react-async-script-loader";
 
 const RECAPTCHA_KEY = process.env.RECAPTCHA_KEY;
+var captcha = false;
 
-class ReCaptchaComp extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
-    this.verifyCallback = this.verifyCallback.bind(this);
-  }
-  componentDidMount() {
-    if (this.captcha) {
+
+function ReCaptchaComp(){
+
+    const componentDidMount = () => {
+    if (captcha) {
         console.log("started, just a second...")
-        this.captcha.reset();
+        captcha.reset();
     }
-  }
-  onLoadRecaptcha() {
-      if (this.captcha) {
-          this.captcha.reset();
+  };
+  const onLoadRecaptcha = () => {
+      if (captcha) {
+          captcha.reset();
       }
-  }
-  verifyCallback(recaptchaToken) {
+  };
+  const verifyCallback = (recaptchaToken) => {
     // Here you will get the final recaptchaToken!!!  
     console.log(recaptchaToken, "<= your recaptcha token")
-  }
-  render() {
-      console.log(RECAPTCHA_KEY)
+  };
+
     return (
       <div>
         <ReCaptcha
-            ref={(el) => {this.captcha = el;}}
+            ref={(el) => {captcha = el;}}
             size="normal"
             data-theme="dark"            
             data-badge="inline"
             render="explicit"
             //Add the site key here 
             sitekey= {RECAPTCHA_KEY}
-            onloadCallback={this.onLoadRecaptcha}
-            verifyCallback={this.verifyCallback}
+            onloadCallback={onLoadRecaptcha}
+            verifyCallback={verifyCallback}
         />
       </div>
     );
   };
-};
+
 export default scriptLoader(`https://www.google.com/recaptcha/api.js`)(ReCaptchaComp);
