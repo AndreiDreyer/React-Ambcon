@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '0.5rem',
       marginBottom: '0.5rem',
     },
-    background: '#ffd065',
+    background: '#5eac3f',
     borderRadius: 3,
     border: 0,
     color: 'black',
@@ -107,6 +107,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formHeader: {
     fontFamily: 'Oswald Regular',
+    color: '#5eac3f',
     fontSize: '2rem',
     textAlign: 'center',
   },
