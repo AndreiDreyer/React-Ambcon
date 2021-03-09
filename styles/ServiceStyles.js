@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     card: {
         flexGrow: 1,
         width: '100%',
-        marginTop: 75,
+        marginTop: 134,
     },
     media: {
         height: 400,
@@ -90,6 +90,7 @@ const useStyles = makeStyles({
         },
     },
     bodyBlock: {
+        marginBottom: '15%',
         [theme.breakpoints.down('769')]: {
             marginTop: '2%',
         },
@@ -99,6 +100,9 @@ const useStyles = makeStyles({
         [theme.breakpoints.up('1280')]: {
             marginTop: '11%',
         },
+    },
+    footer: {
+        marginTop: 10,
     },
 });
 

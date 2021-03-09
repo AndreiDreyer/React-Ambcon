@@ -14,7 +14,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "absolute",
+    position: "relative",
     bottom: 0,
     width: "100%",
     display: "flex",

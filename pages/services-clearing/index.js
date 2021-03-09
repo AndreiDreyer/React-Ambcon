@@ -6,12 +6,15 @@ import { CardContent } from '@material-ui/core';
 
 import ServicesNav from '../../components/ServicesNav'
 import {useStyles} from '../../styles/ServiceStyles'
+import Navigation from '../../components/Navigation'
+import Footer from '../../components/Footer'
 
 export default function Services() {
     const classes = useStyles();
 
     return (
         <div className={classes.mainContainer}>
+            <Navigation></Navigation>
             <div className={classes.bannerDiv}>
                 <Card className={classes.card}>
                     <CardMedia
@@ -38,7 +41,8 @@ export default function Services() {
                         <ServicesNav></ServicesNav>
                     </div>
                 </div>
-            </div>    
+            </div>  
+                <Footer></Footer>
         </div>
     );
 }

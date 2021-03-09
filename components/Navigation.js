@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
   },
   navbarLogo: {
     width: "200px",
-    margin: theme.spacing(2),
+    marginTop: '-0.8%',
+    marginBottom: '-0.4%',
   },
   submenuItem: {
     color: "#007cc4",

@@ -11,6 +11,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import { useTheme } from '@material-ui/core/styles';
 import ServicesNav from '../../components/ServicesNav'
+import Navigation from '../../components/Navigation'
+import Footer from '../../components/Footer'
 import {useStyles} from '../../styles/ServiceStyles'
 
 
@@ -20,6 +22,7 @@ export default function Services() {
 
     return (
         <div className={classes.mainContainer}>
+            <Navigation></Navigation>
             <div className={classes.bannerDiv}>
                 <Card className={classes.card}>
                     <CardMedia
@@ -202,6 +205,7 @@ export default function Services() {
                     </div>
                 </div>
             </div>    
+            <Footer></Footer>
         </div>
     );
 }
