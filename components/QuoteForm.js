@@ -26,20 +26,22 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       marginLeft: 0,
     },
+    [theme.breakpoints.down(420)]: {
+      width: "90%",
+    },
+  },
+  quoteDiv: {
+    margin: "1rem",
   },
   textField: {
     width: "100%",
     margin: "1rem",
     alignItems: "center",
-    [theme.breakpoints.down(765)]: {
-      width: "10rem",
-    },
-    [theme.breakpoints.down(320)]: {
-      width: "8rem",
-    },
   },
   buttonDiv: {
     width: "100%",
+    marginLeft: "1rem",
+    marginRight: "1rem",
   },
   quoteButton: {
     backgroundColor: "#68bd45",
@@ -47,19 +49,32 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginLeft: "auto",
     marginRight: "auto",
-    [theme.breakpoints.down(766)]: {
+    [theme.breakpoints.down(769)]: {
       marginRight: 0,
       marginLeft: 0,
       width: "100%",
     },
   },
   clearQuote: {
-    marginLeft: 12,
+    marginLeft: 24,
+    [theme.breakpoints.down(420)]: {
+      marginLeft: 0,
+      marginTop: "1rem",
+    },
   },
   centerDiv: {
     marginLeft: "20%",
     marginRight: "20%",
     display: "flex",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "1rem",
+      marginRight: "1rem",
+    },
+    [theme.breakpoints.down(420)]: {
+      display: "block",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
   },
   topInfo: {
     textAlign: "center",
@@ -75,7 +90,7 @@ export default function QuoteForm() {
   const [renderQuote, setRenderQuote] = React.useState(false);
   const [quoteValue, setQuoteValue] = React.useState(0);
 
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } = useFormik({
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit, setFieldValue } = useFormik({
     initialValues: {
       length: 0,
       width: 0,
@@ -94,7 +109,7 @@ export default function QuoteForm() {
 
     onSubmit: (values, { setSubmitting }) => {
       setRenderQuote(true);
-      setQuoteValue(calculateQuote(values.length, values.width, values.height, values.weight));
+      setQuoteValue(calculateQuote());
       console.log(values);
     },
   });
@@ -108,8 +123,18 @@ export default function QuoteForm() {
     values.weight = 0;
   };
 
-  const calculateQuote = (length, width, height, weight) => {
-    return (length * width * height * weight * 0.3).toFixed(2);
+  const calculateQuote = () => {
+    return (values.length * values.width * values.height * values.weight * 0.2).toFixed(2);
+  };
+
+  const customOnChange = (fieldName, value) => {
+    console.log(fieldName);
+    console.log(value);
+    console.log(quoteValue);
+    setFieldValue(fieldName, value);
+    if (value !== "") {
+      setQuoteValue(calculateQuote());
+    }
   };
 
   return (
@@ -130,7 +155,7 @@ export default function QuoteForm() {
             className: classes.textField,
           }}
           value={values.length}
-          onChange={handleChange}
+          onChange={(e) => customOnChange("length", e.target.value)}
           onBlur={handleBlur}
           helperText={touched.length ? errors.length : ""}
           error={touched.length && !!errors.length}
@@ -146,7 +171,7 @@ export default function QuoteForm() {
             className: classes.textField,
           }}
           value={values.width}
-          onChange={handleChange}
+          onChange={(e) => customOnChange("width", e.target.value)}
           onBlur={handleBlur}
           helperText={touched.width ? errors.width : ""}
           error={touched.width && !!errors.width}
@@ -162,7 +187,7 @@ export default function QuoteForm() {
             className: classes.textField,
           }}
           value={values.height}
-          onChange={handleChange}
+          onChange={(e) => customOnChange("height", e.target.value)}
           onBlur={handleBlur}
           helperText={touched.height ? errors.height : ""}
           error={touched.height && !!errors.height}
@@ -178,8 +203,8 @@ export default function QuoteForm() {
             className: classes.textField,
           }}
           value={values.weight}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          onChange={(e) => customOnChange("weight", e.target.value)}
+          onBlur={(e) => customOnChange("weight", e.target.value)}
           helperText={touched.weight ? errors.weight : ""}
           error={touched.weight && !!errors.weight}
         />
@@ -191,8 +216,11 @@ export default function QuoteForm() {
           label="Service"
           variant="standard"
           className={classes.textField}
+          InputProps={{
+            className: classes.textField,
+          }}
           value={values.service}
-          onChange={handleChange}
+          onChange={(e) => customOnChange("service", e.target.value)}
           onBlur={handleBlur}
           helperText={touched.service ? errors.service : ""}
           error={touched.service && !!errors.service}
@@ -213,7 +241,7 @@ export default function QuoteForm() {
           </div>
         </div>
         {renderQuote && (
-          <div>
+          <div className={classes.quoteDiv}>
             <h3>Your Quote Below:</h3>
             <TableContainer>
               <Table className={classes.table} aria-label="simple table">

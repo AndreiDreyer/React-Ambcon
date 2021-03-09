@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(4),
     marginLeft: "25%",
     marginRight: "25%",
+    [theme.breakpoints.down(420)]: {
+      marginLeft: "2rem",
+      marginRight: "2rem",
+    },
   },
   page: {
     paddingTop: 173,
