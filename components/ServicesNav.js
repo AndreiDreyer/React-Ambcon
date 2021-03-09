@@ -5,10 +5,16 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
+<<<<<<< HEAD
 import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import TrackChangesIcon from '@material-ui/icons/TrackChanges';
+=======
+import ImageIcon from '@material-ui/icons/Image';
+import WorkIcon from '@material-ui/icons/Work';
+import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+>>>>>>> dev
 import { Link } from '@material-ui/core';
 import { useRouter } from 'next/router'
 
@@ -42,7 +48,11 @@ function FolderList() {
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
+<<<<<<< HEAD
                                 <ViewQuiltIcon />
+=======
+                                <ImageIcon />
+>>>>>>> dev
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Consolidation Loads" />
@@ -55,7 +65,11 @@ function FolderList() {
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
+<<<<<<< HEAD
                             <AirportShuttleIcon />
+=======
+                            <WorkIcon />
+>>>>>>> dev
                         </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Clearing" />
@@ -68,7 +82,11 @@ function FolderList() {
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
+<<<<<<< HEAD
                             <TrackChangesIcon />
+=======
+                            <BeachAccessIcon />
+>>>>>>> dev
                         </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Procurement / Facilitation Service" />
@@ -81,7 +99,11 @@ function FolderList() {
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
+<<<<<<< HEAD
                             <LocalShippingIcon />
+=======
+                            <BeachAccessIcon />
+>>>>>>> dev
                         </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Full Load" />
