@@ -56,6 +56,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const navigationItems = [
+  {
+    text: "Home",
+    url: "/",
+  },
+  {
+    text: "About Us",
+    url: "/about",
+  },
+  {
+    text: "Services",
+    url: "/services",
+    sublinks: [
+      {
+        text: "Consolidated Load",
+        url: "/services-consolidated-load",
+      },
+      {
+        text: "Full Load",
+        url: "/services-full-load",
+      },
+      {
+        text: "Clearing",
+        url: "/services-clearing",
+      },
+    ],
+  },
+  {
+    text: "Quote",
+    url: "/quote",
+  },
+];
+
 export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
@@ -84,120 +117,6 @@ export default function Navigation() {
     setDropDownOpen(!dropdownOpen);
   };
 
-  const navigationItems = [
-    {
-      text: "Home",
-      url: "/",
-    },
-    {
-      text: "About Us",
-      url: "/about",
-    },
-    {
-      text: "Services",
-      url: "/services",
-      sublinks: [
-        {
-          text: "Consolidated Load",
-          url: "/services-consolidated-load",
-        },
-        {
-          text: "Full Load",
-          url: "/services-full-load",
-        },
-        {
-          text: "Clearing",
-          url: "/services-clearing",
-        },
-      ],
-    },
-    {
-      text: "Quote",
-      url: "/quote",
-    },
-  ];
-
-  const drawer = (
-    <div className={classes.root}>
-      <List component="nav" aria-aria-labelledby="nested-list-subheader" className={classes.root}>
-        {navigationItems.map((navItem) => {
-          if (typeof navItem.sublinks !== "undefined") {
-            return (
-              <List key={navItem.text}>
-                <ListItem button key={navItem.text} onClick={handleDropdownOpen}>
-                  <ListItemText primary={navItem.text} />
-                  {dropdownOpen ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
-                <Collapse in={dropdownOpen} timeout="auto" entered={classes.nested} unmountOnExit>
-                  <List component="div" disablePadding>
-                    {navItem.sublinks.map((subNavItem) => (
-                      <Link href={subNavItem.url} key={subNavItem.text}>
-                        <ListItem button className={classes.nested}>
-                          <ListItemText primary={subNavItem.text} />
-                        </ListItem>
-                      </Link>
-                    ))}
-                  </List>
-                </Collapse>
-              </List>
-            );
-          } else {
-            return (
-              <ListItem button key={navItem.text}>
-                <Link href={navItem.url}>
-                  <ListItemText primary={navItem.text}></ListItemText>
-                </Link>
-              </ListItem>
-            );
-          }
-        })}
-      </List>
-    </div>
-  );
-
-  const navigationBar = (
-    <AppBar className={classes.appBar} elevation={1}>
-      <Toolbar>
-        <img src="logo.png" className={classes.navbarLogo} />
-        {navigationItems.map((navItem) => {
-          if (typeof navItem.sublinks === "undefined") {
-            return (
-              <Link key={navItem.text} href={navItem.url}>
-                <Button className={classes.menuButton}>{navItem.text}</Button>
-              </Link>
-            );
-          } else {
-            return (
-              <div key={navItem.text}>
-                <Button className={classes.menuButton} onClick={handleClick}>
-                  {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
-                </Button>
-                <Menu
-                  id={"yomama"}
-                  key={navItem.text}
-                  anchorEl={anchorEl}
-                  anchorOrigin={{ vertical: "top", horizontal: "left" }}
-                  transformOrigin={{ vertical: "top", horizontal: "left" }}
-                  keepMounted
-                  open={open}
-                  onClose={handleDropdownClose}
-                >
-                  {navItem.sublinks.map((sublink) => (
-                    <Link key={sublink.text} href={sublink.url} className={classes.submenuItem}>
-                      <MenuItem handleClose={handleDropdownClose} className={classes.submenuItem}>
-                        {sublink.text}
-                      </MenuItem>
-                    </Link>
-                  ))}
-                </Menu>
-              </div>
-            );
-          }
-        })}
-      </Toolbar>
-    </AppBar>
-  );
-
   const container = typeof window !== "undefined" ? () => window.document.body : undefined;
 
   return (
@@ -221,11 +140,84 @@ export default function Navigation() {
             classes={{ paper: classes.drawerPaper }}
             ModalProps={{ keepMounted: true }}
           >
-            {drawer}
+            <div className={classes.root}>
+              <List component="nav" aria-aria-labelledby="nested-list-subheader" className={classes.root}>
+                {navigationItems.map((navItem) => {
+                  if (typeof navItem.sublinks !== "undefined") {
+                    return (
+                      <List key={navItem.text}>
+                        <ListItem button key={navItem.text} onClick={handleDropdownOpen}>
+                          <ListItemText primary={navItem.text} />
+                          {dropdownOpen ? <ExpandLess /> : <ExpandMore />}
+                        </ListItem>
+                        <Collapse in={dropdownOpen} timeout="auto" entered={classes.nested} unmountOnExit>
+                          <List component="div" disablePadding>
+                            {navItem.sublinks.map((subNavItem) => (
+                              <Link href={subNavItem.url} key={subNavItem.text}>
+                                <ListItem button className={classes.nested}>
+                                  <ListItemText primary={subNavItem.text} />
+                                </ListItem>
+                              </Link>
+                            ))}
+                          </List>
+                        </Collapse>
+                      </List>
+                    );
+                  } else {
+                    return (
+                      <ListItem button key={navItem.text}>
+                        <Link href={navItem.url}>
+                          <ListItemText primary={navItem.text}></ListItemText>
+                        </Link>
+                      </ListItem>
+                    );
+                  }
+                })}
+              </List>
+            </div>
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
-          {navigationBar}
+          <AppBar className={classes.appBar} elevation={1}>
+            <Toolbar>
+              <img src="logo.png" className={classes.navbarLogo} />
+              {navigationItems.map((navItem) => {
+                if (typeof navItem.sublinks === "undefined") {
+                  return (
+                    <Link key={navItem.text} href={navItem.url}>
+                      <Button className={classes.menuButton}>{navItem.text}</Button>
+                    </Link>
+                  );
+                } else {
+                  return (
+                    <div key={navItem.text}>
+                      <Button className={classes.menuButton} onClick={handleClick}>
+                        {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
+                      </Button>
+                      <Menu
+                        id={"yomama"}
+                        key={navItem.text}
+                        anchorEl={anchorEl}
+                        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                        transformOrigin={{ vertical: "top", horizontal: "left" }}
+                        keepMounted
+                        open={open}
+                        onClose={handleDropdownClose}
+                      >
+                        {navItem.sublinks.map((sublink) => (
+                          <Link key={sublink.text} href={sublink.url} className={classes.submenuItem}>
+                            <MenuItem handleClose={handleDropdownClose} className={classes.submenuItem}>
+                              {sublink.text}
+                            </MenuItem>
+                          </Link>
+                        ))}
+                      </Menu>
+                    </div>
+                  );
+                }
+              })}
+            </Toolbar>
+          </AppBar>
         </Hidden>
       </nav>
     </div>

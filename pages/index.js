@@ -83,10 +83,10 @@ export default function Home() {
         <div className={classes.intorParagraph}>
           <h1>The who's who in Logistics</h1>
           <p className={classes.introText}>
-            Ambcon Logistics specialises in a wide spectrum of transport service including full-load, consolidation, transport broking and procurement
-            services. With an ample fleet of fortyeight horses and 65 super link trailers, of which 24 are taut liners. Ambcon Logistics are well
-            placed to meet your transporting needs. In addition we enjoy strong working relationships with a group of reliable transport operators who
-            we sub-contract where necessary.
+            Ambcon Logistics specialises in a wide spectrum of transport services including full-load, consolidation, transport broking and
+            procurement services. With an ample fleet of forty-eight horses and 65 super link trailers, of which 24 are taut liners. Ambcon Logistics
+            are well placed to meet your transporting needs. In addition we enjoy strong working relationships with a group of reliable transport
+            operators who we sub-contract where necessary.
           </p>
         </div>
         <div className={classes.servicesContainer}>
