@@ -23,7 +23,11 @@ const useStyles = makeStyles({
     card: {
         flexGrow: 1,
         width: '100%',
+        [theme.breakpoints.down('sm')]: {
+        },
+        [theme.breakpoints.up('md')]: {
         marginTop: 134,
+        },
     },
     media: {
         height: 400,
