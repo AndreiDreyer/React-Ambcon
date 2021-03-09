@@ -9,11 +9,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { useTheme } from '@material-ui/core/styles';
-import ServicesNav from '../../components/ServicesNav'
-import Navigation from '../../components/Navigation'
-import Footer from '../../components/Footer'
-import {useStyles} from '../../styles/ServiceStyles'
+import ServicesNav from '../../../components/ServicesNav'
+import {useStyles} from '../../../styles/ServiceStyles'
+import Navigation from '../../../components/Navigation'
+import Footer from '../../../components/Footer'
 
 
 export default function Services() {
@@ -27,7 +26,7 @@ export default function Services() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.media}
-                        image="./trucking-banner.jpg"
+                        image="../trucking-banner.jpg"
                         title="Contemplative Reptile"
                         />
                 </Card>

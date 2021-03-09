@@ -4,10 +4,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { CardContent } from '@material-ui/core';
 
-import ServicesNav from '../../components/ServicesNav'
-import Navigation from '../../components/Navigation'
-import Footer from '../../components/Footer'
-import {useStyles} from '../../styles/ServiceStyles'
+import ServicesNav from '../../../components/ServicesNav'
+import {useStyles} from '../../../styles/ServiceStyles'
+import Navigation from '../../../components/Navigation'
+import Footer from '../../../components/Footer'
 
 export default function Services() {
     const classes = useStyles();
@@ -19,14 +19,14 @@ export default function Services() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.media}
-                        image="./trucking-banner.jpg"
+                        image="../trucking-banner.jpg"
                         title="Contemplative Reptile"
                         />
                 </Card>
             </div>
             <div className={classes.bodyBlock}>
                 <Typography className={classes.headers} gutterBottom variant="h3" component="h1">
-                    Consolidation Loads
+                    Full Loads
                 </Typography>
                 <div className={classes.body}>
                     <CardContent className={classes.content}>
@@ -38,8 +38,8 @@ export default function Services() {
                         <ServicesNav></ServicesNav>
                     </div>
                 </div>
-            </div>   
-            <Footer></Footer> 
+            </div>    
+            <Footer></Footer>
         </div>
     );
 }

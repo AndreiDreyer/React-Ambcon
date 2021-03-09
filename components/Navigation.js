@@ -49,6 +49,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '-0.8%',
     marginBottom: '-0.4%',
   },
+  navbarLinks: {
+    display: 'flex',
+    marginLeft: 'auto',
+    marginRight: '2rem',
+  },
   submenuItem: {
     color: "#007cc4",
   },
@@ -72,15 +77,15 @@ const navigationItems = [
     sublinks: [
       {
         text: "Consolidated Load",
-        url: "/services-consolidated-load",
+        url: "/services/consolidated-load",
       },
       {
         text: "Full Load",
-        url: "/services-full-load",
+        url: "/services/full-load",
       },
       {
         text: "Clearing",
-        url: "/services-clearing",
+        url: "/services/clearing",
       },
     ],
   },
@@ -124,7 +129,7 @@ export default function Navigation() {
     <div className={classes.root}>
       {!mdUp && (
         <Toolbar className={classes.toolbarStyle}>
-          <img src="logo.png" className={classes.navbarLogo} />
+          <img src="../../logo.png" className={classes.navbarLogo} />
           <IconButton aria-label="open-drawer" edge="start" onClick={handleDrawerToggle} className={classes.menuButton}>
             <MenuIcon className={classes.hamburgerIcon} />
           </IconButton>
@@ -181,42 +186,44 @@ export default function Navigation() {
         <Hidden xsDown implementation="css">
           <AppBar className={classes.appBar} elevation={1}>
             <Toolbar>
-              <img src="logo.png" className={classes.navbarLogo} />
-              {navigationItems.map((navItem) => {
-                if (typeof navItem.sublinks === "undefined") {
-                  return (
-                    <Link key={navItem.text} href={navItem.url}>
-                      <Button className={classes.menuButton}>{navItem.text}</Button>
-                    </Link>
-                  );
-                } else {
-                  return (
-                    <div key={navItem.text}>
-                      <Button className={classes.menuButton} onClick={handleClick}>
-                        {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
-                      </Button>
-                      <Menu
-                        id={"yomama"}
-                        key={navItem.text}
-                        anchorEl={anchorEl}
-                        anchorOrigin={{ vertical: "top", horizontal: "left" }}
-                        transformOrigin={{ vertical: "top", horizontal: "left" }}
-                        keepMounted
-                        open={open}
-                        onClose={handleDropdownClose}
-                      >
-                        {navItem.sublinks.map((sublink) => (
-                          <Link key={sublink.text} href={sublink.url} className={classes.submenuItem}>
-                            <MenuItem handleClose={handleDropdownClose} className={classes.submenuItem}>
-                              {sublink.text}
-                            </MenuItem>
-                          </Link>
-                        ))}
-                      </Menu>
-                    </div>
-                  );
-                }
-              })}
+              <img src="../../logo.png" className={classes.navbarLogo} />
+              <div className={classes.navbarLinks}>
+                {navigationItems.map((navItem) => {
+                  if (typeof navItem.sublinks === "undefined") {
+                    return (
+                      <Link key={navItem.text} href={navItem.url}>
+                        <Button className={classes.menuButton}>{navItem.text}</Button>
+                      </Link>
+                    );
+                  } else {
+                    return (
+                      <div key={navItem.text}>
+                        <Button className={classes.menuButton} onClick={handleClick}>
+                          {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
+                        </Button>
+                        <Menu
+                          id={"yomama"}
+                          key={navItem.text}
+                          anchorEl={anchorEl}
+                          anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                          transformOrigin={{ vertical: "top", horizontal: "left" }}
+                          keepMounted
+                          open={open}
+                          onClose={handleDropdownClose}
+                        >
+                          {navItem.sublinks.map((sublink) => (
+                            <Link key={sublink.text} href={sublink.url} className={classes.submenuItem}>
+                              <MenuItem handleClose={handleDropdownClose} className={classes.submenuItem}>
+                                {sublink.text}
+                              </MenuItem>
+                            </Link>
+                          ))}
+                        </Menu>
+                      </div>
+                    );
+                  }
+                })}
+              </div>
             </Toolbar>
           </AppBar>
         </Hidden>

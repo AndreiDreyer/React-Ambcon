@@ -27,10 +27,10 @@ function FolderList() {
     const classes = useStyles();
     const router = useRouter();
 
-    const consolidated = router.pathname === '/services-consolidated-load';
-    const clearing = router.pathname === '/services-clearing';
-    const procurement = router.pathname === '/services-procurement';
-    const fullLoad = router.pathname === '/services-full-load';
+    const consolidated = router.pathname === '/services/consolidated-load';
+    const clearing = router.pathname === '/services/clearing';
+    const procurement = router.pathname === '/services/procurement';
+    const fullLoad = router.pathname === '/services/full-load';
 
     console.log(router.pathname)
     
@@ -38,7 +38,7 @@ function FolderList() {
     return (
         <List className={classes.root}>
             {!consolidated && (
-                <Link href="/services-consolidated-load" className={classes.link}>
+                <Link href="/services/consolidated-load" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
@@ -51,7 +51,7 @@ function FolderList() {
             )}
 
             {!clearing && (
-                <Link href="/services-clearing" className={classes.link}>
+                <Link href="/services/clearing" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
@@ -64,7 +64,7 @@ function FolderList() {
             )}
 
             {!procurement && (
-                <Link href="/services-procurement" className={classes.link}>
+                <Link href="/services/procurement" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
@@ -77,7 +77,7 @@ function FolderList() {
             )}
 
             {!fullLoad && (
-                <Link href="/services-full-load" className={classes.link}>
+                <Link href="/services/full-load" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>

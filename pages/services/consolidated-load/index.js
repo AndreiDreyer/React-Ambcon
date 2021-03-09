@@ -4,10 +4,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { CardContent } from '@material-ui/core';
 
-import ServicesNav from '../../components/ServicesNav'
-import {useStyles} from '../../styles/ServiceStyles'
-import Navigation from '../../components/Navigation'
-import Footer from '../../components/Footer'
+import ServicesNav from '../../../components/ServicesNav'
+import {useStyles} from '../../../styles/ServiceStyles'
+import Navigation from '../../../components/Navigation'
+import Footer from '../../../components/Footer'
 
 export default function Services() {
     const classes = useStyles();
@@ -19,30 +19,27 @@ export default function Services() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.media}
-                        image="./trucking-banner.jpg"
+                        image="../trucking-banner.jpg"
                         title="Contemplative Reptile"
                         />
                 </Card>
             </div>
             <div className={classes.bodyBlock}>
                 <Typography className={classes.headers} gutterBottom variant="h3" component="h1">
-                    Clearing
+                    Consolidation Loads
                 </Typography>
                 <div className={classes.body}>
                     <CardContent className={classes.content}>
-                    <Typography className={classes.textHeaders} gutterBottom variant="h5" component="h1">
-                    Clearing into Zimbabwe
-                    </Typography>
-                    <Typography className={classes.text} paragraph={true} component="h4">
-                    Our clients are currently able to make use of Clearing Agents of their choice. Although we do not insist on our clients making use of any specific clearing houses we do strongly encourage them to make use of reputable operators in the hope there is more control of the clearing process and reduce standing times at the border.
-                    </Typography>
+                    Dovetail provides business analysis services on any new project that is embarked on. Qualified business analysts spend time on site to understand the current processes and future process expectations with the implementation of a new system.
+                    A detailed process review document is generated that documents the expected final outcomes of the project. This document also highlights any potential system or business gaps that must be addressed.
+                    The document is utilised as a checklist to ensure the final deliverable is as per client’s expectations and Dovetail’s commitment.
                     </CardContent>
                     <div className={classes.listBox}>
                         <ServicesNav></ServicesNav>
                     </div>
                 </div>
-            </div>  
-                <Footer></Footer>
+            </div>   
+            <Footer></Footer> 
         </div>
     );
 }
