@@ -1,11 +1,21 @@
 import React from "react";
 
+import clsx from "clsx";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import TextField from "@material-ui/core/TextField";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -18,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textField: {
-    width: "25rem",
+    width: "100%",
     margin: "1rem",
     alignItems: "center",
     [theme.breakpoints.down(765)]: {
@@ -34,19 +44,22 @@ const useStyles = makeStyles((theme) => ({
   quoteButton: {
     backgroundColor: "#68bd45",
     color: "black",
-    width: "40%",
-    marginLeft: "30%",
-    marginRight: "30%",
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
     [theme.breakpoints.down(766)]: {
       marginRight: 0,
       marginLeft: 0,
       width: "100%",
     },
   },
+  clearQuote: {
+    marginLeft: 12,
+  },
   centerDiv: {
-    width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
+    marginLeft: "20%",
+    marginRight: "20%",
+    display: "flex",
   },
   topInfo: {
     textAlign: "center",
@@ -54,8 +67,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const quoteServices = ["Full Load", "Consolidated Load", "Clearance", "Procurement"];
+
 export default function QuoteForm() {
   const classes = useStyles();
+
+  const [renderQuote, setRenderQuote] = React.useState(false);
+  const [quoteValue, setQuoteValue] = React.useState(0);
 
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: {
@@ -63,6 +81,7 @@ export default function QuoteForm() {
       width: 0,
       height: 0,
       weight: 0,
+      service: "Full Load",
     },
 
     validationSchema: Yup.object().shape({
@@ -70,18 +89,34 @@ export default function QuoteForm() {
       width: Yup.number("Width must be a number").required("Width is required"),
       height: Yup.number("Height must be a number").required("Height is required"),
       weight: Yup.number("Weight must be a number").required("Weight is required"),
+      service: Yup.string("Service must be a string").required("Service is Required"),
     }),
 
     onSubmit: (values, { setSubmitting }) => {
+      setRenderQuote(true);
+      setQuoteValue(calculateQuote(values.length, values.width, values.height, values.weight));
       console.log(values);
     },
   });
+
+  const clearQuote = () => {
+    setRenderQuote(false);
+    setQuoteValue(0);
+    values.length = 0;
+    values.width = 0;
+    values.height = 0;
+    values.weight = 0;
+  };
+
+  const calculateQuote = (length, width, height, weight) => {
+    return (length * width * height * weight * 0.3).toFixed(2);
+  };
 
   return (
     <form onSubmit={handleSubmit} border={1} className={classes.quoteForm}>
       <div style={{ fontSize: "1.3rem" }} className={classes.innerQuoteForm}>
         <div className={classes.topInfo}>
-          <Typography>Enter the information for a quote</Typography>
+          <Typography>Enter the requried information below to generate a quote</Typography>
         </div>
         <div className={classes.textfieldDiv}></div>
         <TextField
@@ -148,13 +183,83 @@ export default function QuoteForm() {
           helperText={touched.weight ? errors.weight : ""}
           error={touched.weight && !!errors.weight}
         />
+        <TextField
+          required
+          select
+          id="service"
+          name="service"
+          label="Service"
+          variant="standard"
+          className={classes.textField}
+          value={values.service}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          helperText={touched.service ? errors.service : ""}
+          error={touched.service && !!errors.service}
+        >
+          <MenuItem value="Full Load">Full Load</MenuItem>
+          <MenuItem value="Consolidated Load">Consolidated Load</MenuItem>
+          <MenuItem value="Clearing">Clearing</MenuItem>
+          <MenuItem value="Procurement">Procurement</MenuItem>
+        </TextField>
         <div className={classes.buttonDiv}>
           <div className={classes.centerDiv}>
             <Button type="submit" color="primary" className={classes.quoteButton}>
               Get Quote
             </Button>
+            <Button onClick={clearQuote} className={clsx(classes.quoteButton, classes.clearQuote)}>
+              Clear Quote
+            </Button>
           </div>
         </div>
+        {renderQuote && (
+          <div>
+            <h3>Your Quote Below:</h3>
+            <TableContainer>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Measurement</TableCell>
+                    <TableCell>Unit</TableCell>
+                    <TableCell>Value</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell>Length</TableCell>
+                    <TableCell>cm</TableCell>
+                    <TableCell>{values.length}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Width</TableCell>
+                    <TableCell>cm</TableCell>
+                    <TableCell>{values.width}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Height</TableCell>
+                    <TableCell>cm</TableCell>
+                    <TableCell>{values.height}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>Weight</TableCell>
+                    <TableCell>kg</TableCell>
+                    <TableCell>{values.weight}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell colSpan={1}></TableCell>
+                    <TableCell>Service:</TableCell>
+                    <TableCell>{values.service}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell colSpan={1}></TableCell>
+                    <TableCell>Total:</TableCell>
+                    <TableCell>R{quoteValue}</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </div>
+        )}
       </div>
     </form>
   );

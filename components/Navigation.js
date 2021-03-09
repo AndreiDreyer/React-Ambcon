@@ -12,7 +12,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
 import AppBar from "@material-ui/core/AppBar";
 import Collapse from "@material-ui/core/Collapse";
 
