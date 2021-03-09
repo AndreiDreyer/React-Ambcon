@@ -29,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       marginTop: '2rem',
     },
-      minWidth: 280,
+      minWidth: '10%',
       display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      alignContent: 'center',
+      justifyContent: 'right',
+      alignItems: 'right',
+      alignContent: 'right',
       color: 'black',
       fontSize: 20,
   },
@@ -98,10 +98,12 @@ const useStyles = makeStyles((theme) => ({
      fontFamily: 'Oswald Regular',
      fontSize: 1,
      marginTop: 0,
+     width: '50%',
   },
   formHeader: {
     fontFamily: 'Oswald Regular',
     fontSize: '2rem',
+    textAlign: 'center',
   },
 }));
 
@@ -118,13 +120,17 @@ function ContactForm(props) {
   const { values, touched, errors, isSubmitting, handleChange, handleBlur, handleSubmit, handleReset, isValid, dirty } = useFormik({
     initialValues: {
       name: '',
+      surname: '',
       email: '',
+      contactNumber: '',
       feedback: '',
     },
 
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('Please enter your name'),
+      name: Yup.string().required('Name'),
+      surname: Yup.string().required('Surname'),
       email: Yup.string().email('Please enter a valid email').required('Please enter your email'),
+      contactNumber: Yup.string().required('Contact Number'),
       feedback: Yup.string().required('Please enter a message'),
     }),
 
@@ -167,10 +173,13 @@ function ContactForm(props) {
   return (
     //Form layout that requires a Name, Email, and message
     <form className={classes.root} onSubmit={handleSubmit} border={1}>
-      <Typography className={classes.formHeader} variant="h1" />
+      
       <br />
       <div className={classes.text} style={{ fontSize: '1.3rem'}}>
-        <Typography>Get in contact with us, we'd love to hear from you. </Typography>
+        <Typography className={classes.formHeader} variant="h1" paragraph='true' gutterBottom>Ambcon can make crossborder logistics far more simple and efficient, helping you reliably streamline your business. </Typography>
+        <Typography className={classes.formHeader} variant="h1">
+            Get in touch today
+        </Typography>
         <div>
           <TextField
             required
@@ -192,6 +201,24 @@ function ContactForm(props) {
         <div>
           <TextField
             required
+            name="surname"
+            id="surname"
+            value={values.surname}
+            className= {classes.textField}
+            InputProps={{
+              className: classes.textField
+            }}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            label="Surname"
+            variant="standard"
+            helperText={touched.surname ? errors.surname : ''}
+            error={touched.surname && !!errors.surname}
+          />
+        </div>
+        <div>
+          <TextField
+            required
             name="email"
             id="email"
             variant="standard"
@@ -205,6 +232,24 @@ function ContactForm(props) {
             onBlur={handleBlur}
             helperText={touched.email ? errors.email : ''}
             error={touched.email && !!errors.email}
+          />
+        </div>
+        <div>
+          <TextField
+            required
+            name="contactNumber"
+            id="contactNumber"
+            variant="standard"
+            label="Contact Number"
+            className={classes.textField}
+            InputProps={{
+              className: classes.textField
+            }}
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            helperText={touched.contactNumber ? errors.contactNumber : ''}
+            error={touched.contactNumber && !!errors.contactNumber}
           />
         </div>
         <div>
