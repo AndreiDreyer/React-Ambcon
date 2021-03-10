@@ -25,5 +25,8 @@
     "style": "0.0.3",
     "sweetalert2": "^10.15.5",
     "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
   }
 }

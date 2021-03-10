@@ -5,10 +5,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-import { Link } from '@material-ui/core';
+import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
+import LocalShippingIcon from '@material-ui/icons/LocalShipping';
+import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
+import TrackChangesIcon from '@material-ui/icons/TrackChanges';
+import Link from '@material-ui/core/Link';
 import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
@@ -26,22 +27,19 @@ function FolderList() {
     const classes = useStyles();
     const router = useRouter();
 
-    const consolidated = router.pathname === '/services-consolidated-load';
-    const clearing = router.pathname === '/services-clearing';
-    const procurement = router.pathname === '/services-procurement';
-    const fullLoad = router.pathname === '/services-full-load';
-
-    console.log(router.pathname)
-    
+    const consolidated = router.pathname === '/services/consolidated-load';
+    const clearing = router.pathname === '/services/clearing';
+    const procurement = router.pathname === '/services/procurement';
+    const fullLoad = router.pathname === '/services/full-load';
 
     return (
         <List className={classes.root}>
             {!consolidated && (
-                <Link href="/services-consolidated-load" className={classes.link}>
+                <Link href="/services/consolidated-load" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
-                                <ImageIcon />
+                                <ViewQuiltIcon />
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Consolidation Loads" />
@@ -50,11 +48,11 @@ function FolderList() {
             )}
 
             {!clearing && (
-                <Link href="/services-clearing" className={classes.link}>
+                <Link href="/services/clearing" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
-                            <WorkIcon />
+                            <AirportShuttleIcon />
                         </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Clearing" />
@@ -63,11 +61,11 @@ function FolderList() {
             )}
 
             {!procurement && (
-                <Link href="/services-procurement" className={classes.link}>
+                <Link href="/services/procurement" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
-                            <BeachAccessIcon />
+                            <TrackChangesIcon />
                         </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Procurement / Facilitation Service" />
@@ -76,11 +74,11 @@ function FolderList() {
             )}
 
             {!fullLoad && (
-                <Link href="/services-full-load" className={classes.link}>
+                <Link href="/services/full-load" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
-                            <BeachAccessIcon />
+                            <LocalShippingIcon />
                         </Avatar>
                         </ListItemAvatar>
                         <ListItemText primary="Full Load" />
