@@ -105,7 +105,15 @@ const navigationItems = [
         text: "Clearing",
         url: "/services/clearing",
       },
+      {
+        text: "Procurement / Facilitation",
+        url: "/services/procurement",
+      },
     ],
+  },
+  {
+    text: "Contact",
+    url: "/contact",
   },
   {
     text: "Quote",
