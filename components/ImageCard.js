@@ -47,11 +47,6 @@ export default function MediaCard(props) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        {/* <Button size="small" color="primary">
-          Contact
-        </Button> */}
-      </CardActions>
     </Card>
   );
 }

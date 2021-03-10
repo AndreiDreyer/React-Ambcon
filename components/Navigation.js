@@ -249,7 +249,7 @@ export default function Navigation() {
                           {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
                         </Button>
                         <Menu
-                          id={"yomama"}
+                          id={navItem.text}
                           key={navItem.text}
                           anchorEl={anchorEl}
                           anchorOrigin={{ vertical: "top", horizontal: "left" }}
@@ -275,7 +275,7 @@ export default function Navigation() {
                           {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
                         </Button>
                         <Menu
-                          id={"yomama"}
+                          id={navItem.text}
                           key={navItem.text}
                           anchorEl={anchorElAbout}
                           anchorOrigin={{ vertical: "top", horizontal: "left" }}

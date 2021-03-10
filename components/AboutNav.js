@@ -30,9 +30,6 @@ function AboutFolderList() {
     const overview = router.pathname === '/about/overview';
     const team = router.pathname === '/about/our-team';
 
-    console.log(router.pathname)
-    
-
     return (
         <List className={classes.root}>
             {!about && (
