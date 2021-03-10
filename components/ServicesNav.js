@@ -9,7 +9,7 @@ import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import TrackChangesIcon from '@material-ui/icons/TrackChanges';
-import { Link } from '@material-ui/core/Link';
+import Link from '@material-ui/core/Link';
 import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({

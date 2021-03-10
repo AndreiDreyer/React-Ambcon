@@ -17,9 +17,10 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard() {
+export default function MediaCard(props) {
   const classes = useStyles();
-
+  const {img} = props;
+  
   return (
     <Card className={classes.root}>
       <CardActionArea>

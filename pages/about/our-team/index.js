@@ -3,7 +3,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { CardContent } from '@material-ui/core/CardContent';
+import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Slide from '@material-ui/core/Slide';
@@ -21,7 +21,7 @@ export default function Services() {
         return (
           <React.Fragment>
             <Grid item xs={6}>
-              <ImageCard></ImageCard>
+              <ImageCard ></ImageCard>
             </Grid>
             <Grid item xs={6}>
             <ImageCard></ImageCard>

@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { CardContent } from '@material-ui/core/CardContent';
+import CardContent from '@material-ui/core/CardContent';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
