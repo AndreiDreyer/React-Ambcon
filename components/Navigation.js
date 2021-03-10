@@ -45,13 +45,13 @@ const useStyles = makeStyles((theme) => ({
   },
   navbarLogo: {
     width: "200px",
-    marginTop: '-0.8%',
-    marginBottom: '-0.4%',
+    marginTop: "-0.8%",
+    marginBottom: "-0.4%",
   },
   navbarLinks: {
-    display: 'flex',
-    marginLeft: 'auto',
-    marginRight: '2rem',
+    display: "flex",
+    marginLeft: "auto",
+    marginRight: "2rem",
   },
   submenuItem: {
     color: "#007cc4",
@@ -116,9 +116,11 @@ export default function Navigation() {
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorElAbout, setAnchorElAbout] = React.useState(null);
   const [dropdownOpen, setDropDownOpen] = React.useState(false);
 
   const open = !!anchorEl;
+  const openAbout = !!anchorElAbout;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -126,10 +128,17 @@ export default function Navigation() {
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
+    setAnchorElAbout(null);
+  };
+
+  const handleAboutClick = (e) => {
+    setAnchorElAbout(e.currentTarget);
+    setAnchorEl(null);
   };
 
   const handleDropdownClose = () => {
     setAnchorEl(null);
+    setAnchorElAbout(null);
   };
 
   const handleDropdownOpen = () => {
@@ -208,7 +217,7 @@ export default function Navigation() {
                         <Button className={classes.menuButton}>{navItem.text}</Button>
                       </Link>
                     );
-                  } else {
+                  } else if (navItem.text === "Services") {
                     return (
                       <div key={navItem.text}>
                         <Button className={classes.menuButton} onClick={handleClick}>
@@ -222,6 +231,32 @@ export default function Navigation() {
                           transformOrigin={{ vertical: "top", horizontal: "left" }}
                           keepMounted
                           open={open}
+                          onClose={handleDropdownClose}
+                        >
+                          {navItem.sublinks.map((sublink) => (
+                            <Link key={sublink.text} href={sublink.url} className={classes.submenuItem}>
+                              <MenuItem handleClose={handleDropdownClose} className={classes.submenuItem}>
+                                {sublink.text}
+                              </MenuItem>
+                            </Link>
+                          ))}
+                        </Menu>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div key={navItem.text}>
+                        <Button className={classes.menuButton} onClick={handleAboutClick}>
+                          {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
+                        </Button>
+                        <Menu
+                          id={"yomama"}
+                          key={navItem.text}
+                          anchorEl={anchorElAbout}
+                          anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                          transformOrigin={{ vertical: "top", horizontal: "left" }}
+                          keepMounted
+                          open={openAbout}
                           onClose={handleDropdownClose}
                         >
                           {navItem.sublinks.map((sublink) => (
