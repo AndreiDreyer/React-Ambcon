@@ -108,6 +108,10 @@ const navigationItems = [
     ],
   },
   {
+    text: "Contact",
+    url: "/contact",
+  },
+  {
     text: "Quote",
     url: "/quote",
   },
