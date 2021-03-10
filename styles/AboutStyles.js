@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
         },
         [theme.breakpoints.up('md')]: {
-        marginTop: 133,
+        marginTop: 126,
         },
     },
     media: {

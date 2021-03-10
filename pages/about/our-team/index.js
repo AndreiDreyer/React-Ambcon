@@ -12,7 +12,7 @@ import AboutNav from '../../../components/AboutNav'
 import ImageCard from '../../../components/ImageCard'
 import Navigation from '../../../components/Navigation'
 import Footer from '../../../components/Footer'
-import {useStyles} from '../../../styles/ServiceStyles'
+import {useStyles} from '../../../styles/AboutStyles'
 
 export default function Services() {
     const classes = useStyles();

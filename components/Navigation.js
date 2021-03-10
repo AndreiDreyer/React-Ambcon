@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navbarLogo: {
     width: "200px",
-    marginTop: "-0.8%",
+    marginTop: "-0.5%",
     marginBottom: "-0.4%",
   },
   navbarLinks: {
