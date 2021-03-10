@@ -82,8 +82,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const quoteServices = ["Full Load", "Consolidated Load", "Clearance", "Procurement"];
-
 export default function QuoteForm() {
   const classes = useStyles();
 
