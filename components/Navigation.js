@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "white",
     display: "flex",
-    flexWrap: "wrap",
     overflowX: "auto",
   },
   menuButton: {
@@ -47,7 +46,13 @@ const useStyles = makeStyles((theme) => ({
   },
   navbarLogo: {
     width: "200px",
-    margin: theme.spacing(2),
+    marginTop: "-0.5%",
+    marginBottom: "-0.4%",
+  },
+  navbarLinks: {
+    display: "flex",
+    marginLeft: "auto",
+    marginRight: "2rem",
   },
   submenuItem: {
     color: "#007cc4",
@@ -67,8 +72,22 @@ const navigationItems = [
     url: "/",
   },
   {
-    text: "About Us",
+    text: "About",
     url: "/about",
+    sublinks: [
+      {
+        text: "Our Team",
+        url: "/about/our-team",
+      },
+      {
+        text: "Overview",
+        url: "/about/overview",
+      },
+      {
+        text: "Us",
+        url: "/about/us",
+      },
+    ],
   },
   {
     text: "Services",
@@ -76,15 +95,15 @@ const navigationItems = [
     sublinks: [
       {
         text: "Consolidated Load",
-        url: "/services-consolidated-load",
+        url: "/services/consolidated-load",
       },
       {
         text: "Full Load",
-        url: "/services-full-load",
+        url: "/services/full-load",
       },
       {
         text: "Clearing",
-        url: "/services-clearing",
+        url: "/services/clearing",
       },
     ],
   },
@@ -102,9 +121,12 @@ export default function Navigation() {
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [dropdownOpen, setDropDownOpen] = React.useState(false);
+  const [anchorElAbout, setAnchorElAbout] = React.useState(null);
+  const [dropdownOpenAbout, setDropDownOpenAbout] = React.useState(false);
+  const [dropdownOpenServices, setDropDownOpenServices] = React.useState(false);
 
   const open = !!anchorEl;
+  const openAbout = !!anchorElAbout;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -112,14 +134,25 @@ export default function Navigation() {
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
+    setAnchorElAbout(null);
+  };
+
+  const handleAboutClick = (e) => {
+    setAnchorElAbout(e.currentTarget);
+    setAnchorEl(null);
   };
 
   const handleDropdownClose = () => {
     setAnchorEl(null);
+    setAnchorElAbout(null);
   };
 
-  const handleDropdownOpen = () => {
-    setDropDownOpen(!dropdownOpen);
+  const handleDropdownOpenAbout = () => {
+    setDropDownOpenAbout(!dropdownOpenAbout);
+  };
+
+  const handleDropdownOpenSerices = () => {
+    setDropDownOpenServices(!dropdownOpenServices);
   };
 
   const container = typeof window !== "undefined" ? () => window.document.body : undefined;
@@ -128,7 +161,7 @@ export default function Navigation() {
     <div className={classes.root}>
       {!mdUp && (
         <Toolbar className={classes.toolbarStyle}>
-          <img src="logo.png" className={classes.navbarLogo} />
+          <img src="../../logo.png" className={classes.navbarLogo} />
           <IconButton aria-label="open-drawer" edge="start" onClick={handleDrawerToggle} className={classes.menuButton}>
             <MenuIcon className={classes.hamburgerIcon} />
           </IconButton>
@@ -148,14 +181,42 @@ export default function Navigation() {
             <div className={classes.drawer}>
               <List component="nav" aria-aria-labelledby="nested-list-subheader" className={classes.root}>
                 {navigationItems.map((navItem) => {
-                  if (typeof navItem.sublinks !== "undefined") {
+                  if (typeof navItem.sublinks === "undefined") {
+                    return (
+                      <ListItem button key={navItem.text}>
+                        <Link href={navItem.url}>
+                          <ListItemText primary={navItem.text}></ListItemText>
+                        </Link>
+                      </ListItem>
+                    );
+                  } else if (navItem.text === "Services") {
+                      return (
+                        <List key={navItem.text}>
+                          <ListItem button key={navItem.text} onClick={handleDropdownOpenSerices}>
+                            <ListItemText primary={navItem.text} />
+                            {dropdownOpenServices ? <ExpandLess /> : <ExpandMore />}
+                          </ListItem>
+                          <Collapse in={dropdownOpenServices} timeout="auto" entered={classes.nested} unmountOnExit>
+                            <List component="div" disablePadding>
+                              {navItem.sublinks.map((subNavItem) => (
+                                <Link href={subNavItem.url} key={subNavItem.text}>
+                                  <ListItem button className={classes.nested}>
+                                    <ListItemText primary={subNavItem.text} />
+                                  </ListItem>
+                                </Link>
+                              ))}
+                            </List>
+                          </Collapse>
+                        </List>
+                      );
+                  } else {
                     return (
                       <List key={navItem.text}>
-                        <ListItem button key={navItem.text} onClick={handleDropdownOpen}>
+                        <ListItem button key={navItem.text} onClick={handleDropdownOpenAbout}>
                           <ListItemText primary={navItem.text} />
-                          {dropdownOpen ? <ExpandLess /> : <ExpandMore />}
+                          {dropdownOpenAbout ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
-                        <Collapse in={dropdownOpen} timeout="auto" entered={classes.nested} unmountOnExit>
+                        <Collapse in={dropdownOpenAbout} timeout="auto" entered={classes.nested} unmountOnExit>
                           <List component="div" disablePadding>
                             {navItem.sublinks.map((subNavItem) => (
                               <Link href={subNavItem.url} key={subNavItem.text}>
@@ -168,14 +229,6 @@ export default function Navigation() {
                         </Collapse>
                       </List>
                     );
-                  } else {
-                    return (
-                      <ListItem button key={navItem.text}>
-                        <Link href={navItem.url}>
-                          <ListItemText primary={navItem.text}></ListItemText>
-                        </Link>
-                      </ListItem>
-                    );
                   }
                 })}
               </List>
@@ -185,42 +238,70 @@ export default function Navigation() {
         <Hidden xsDown implementation="css">
           <AppBar className={classes.appBar} elevation={1}>
             <Toolbar>
-              <img src="logo.png" className={classes.navbarLogo} />
-              {navigationItems.map((navItem) => {
-                if (typeof navItem.sublinks === "undefined") {
-                  return (
-                    <Link key={navItem.text} href={navItem.url}>
-                      <Button className={classes.menuButton}>{navItem.text}</Button>
-                    </Link>
-                  );
-                } else {
-                  return (
-                    <div key={navItem.text}>
-                      <Button className={classes.menuButton} onClick={handleClick}>
-                        {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
-                      </Button>
-                      <Menu
-                        id={"yomama"}
-                        key={navItem.text}
-                        anchorEl={anchorEl}
-                        anchorOrigin={{ vertical: "top", horizontal: "left" }}
-                        transformOrigin={{ vertical: "top", horizontal: "left" }}
-                        keepMounted
-                        open={open}
-                        onClose={handleDropdownClose}
-                      >
-                        {navItem.sublinks.map((sublink) => (
-                          <Link key={sublink.text} href={sublink.url} className={classes.submenuItem}>
-                            <MenuItem handleClose={handleDropdownClose} className={classes.submenuItem}>
-                              {sublink.text}
-                            </MenuItem>
-                          </Link>
-                        ))}
-                      </Menu>
-                    </div>
-                  );
-                }
-              })}
+              <img src="../../logo.png" className={classes.navbarLogo} />
+              <div className={classes.navbarLinks}>
+                {navigationItems.map((navItem) => {
+                  if (typeof navItem.sublinks === "undefined") {
+                    return (
+                      <Link key={navItem.text} href={navItem.url}>
+                        <Button className={classes.menuButton}>{navItem.text}</Button>
+                      </Link>
+                    );
+                  } else if (navItem.text === "Services") {
+                    return (
+                      <div key={navItem.text}>
+                        <Button className={classes.menuButton} onClick={handleClick}>
+                          {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
+                        </Button>
+                        <Menu
+                          id={navItem.text}
+                          key={navItem.text}
+                          anchorEl={anchorEl}
+                          anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                          transformOrigin={{ vertical: "top", horizontal: "left" }}
+                          keepMounted
+                          open={open}
+                          onClose={handleDropdownClose}
+                        >
+                          {navItem.sublinks.map((sublink) => (
+                            <Link key={sublink.text} href={sublink.url} className={classes.submenuItem}>
+                              <MenuItem handleClose={handleDropdownClose} className={classes.submenuItem}>
+                                {sublink.text}
+                              </MenuItem>
+                            </Link>
+                          ))}
+                        </Menu>
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div key={navItem.text}>
+                        <Button className={classes.menuButton} onClick={handleAboutClick}>
+                          {navItem.text} {mobileOpen ? <ExpandLess /> : <ExpandMore />}
+                        </Button>
+                        <Menu
+                          id={navItem.text}
+                          key={navItem.text}
+                          anchorEl={anchorElAbout}
+                          anchorOrigin={{ vertical: "top", horizontal: "left" }}
+                          transformOrigin={{ vertical: "top", horizontal: "left" }}
+                          keepMounted
+                          open={openAbout}
+                          onClose={handleDropdownClose}
+                        >
+                          {navItem.sublinks.map((sublink) => (
+                            <Link key={sublink.text} href={sublink.url} className={classes.submenuItem}>
+                              <MenuItem handleClose={handleDropdownClose} className={classes.submenuItem}>
+                                {sublink.text}
+                              </MenuItem>
+                            </Link>
+                          ))}
+                        </Menu>
+                      </div>
+                    );
+                  }
+                })}
+              </div>
             </Toolbar>
           </AppBar>
         </Hidden>
