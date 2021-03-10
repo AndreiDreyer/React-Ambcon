@@ -1,8 +1,10 @@
+import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { CardContent } from '@material-ui/core';
+import Slide from '@material-ui/core/Slide';
 
 import ServicesNav from '../../../components/ServicesNav'
 import {useStyles} from '../../../styles/ServiceStyles'
@@ -11,6 +13,11 @@ import Footer from '../../../components/Footer'
 
 export default function Services() {
     const classes = useStyles();
+    const [checked, setChecked] = React.useState(false);
+
+    const handleChange = () => {
+      setChecked((prev) => !prev);
+    };
 
     return (
         <div className={classes.mainContainer}>
@@ -24,6 +31,7 @@ export default function Services() {
                         />
                 </Card>
             </div>
+            <Slide direction="up" in={true}  unmountOnExit>
             <div className={classes.bodyBlock}>
                 <Typography className={classes.headers} gutterBottom variant="h3" component="h1">
                     Full Loads
@@ -39,6 +47,7 @@ export default function Services() {
                     </div>
                 </div>
             </div>    
+            </Slide>
             <Footer></Footer>
         </div>
     );
