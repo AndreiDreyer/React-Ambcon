@@ -117,7 +117,8 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorElAbout, setAnchorElAbout] = React.useState(null);
-  const [dropdownOpen, setDropDownOpen] = React.useState(false);
+  const [dropdownOpenAbout, setDropDownOpenAbout] = React.useState(false);
+  const [dropdownOpenServices, setDropDownOpenServices] = React.useState(false);
 
   const open = !!anchorEl;
   const openAbout = !!anchorElAbout;
@@ -141,8 +142,12 @@ export default function Navigation() {
     setAnchorElAbout(null);
   };
 
-  const handleDropdownOpen = () => {
-    setDropDownOpen(!dropdownOpen);
+  const handleDropdownOpenAbout = () => {
+    setDropDownOpenAbout(!dropdownOpenAbout);
+  };
+
+  const handleDropdownOpenSerices = () => {
+    setDropDownOpenServices(!dropdownOpenServices);
   };
 
   const container = typeof window !== "undefined" ? () => window.document.body : undefined;
@@ -171,14 +176,42 @@ export default function Navigation() {
             <div className={classes.root}>
               <List component="nav" aria-aria-labelledby="nested-list-subheader" className={classes.root}>
                 {navigationItems.map((navItem) => {
-                  if (typeof navItem.sublinks !== "undefined") {
+                  if (typeof navItem.sublinks === "undefined") {
+                    return (
+                      <ListItem button key={navItem.text}>
+                        <Link href={navItem.url}>
+                          <ListItemText primary={navItem.text}></ListItemText>
+                        </Link>
+                      </ListItem>
+                    );
+                  } else if (navItem.text === "Services") {
+                      return (
+                        <List key={navItem.text}>
+                          <ListItem button key={navItem.text} onClick={handleDropdownOpenSerices}>
+                            <ListItemText primary={navItem.text} />
+                            {dropdownOpenServices ? <ExpandLess /> : <ExpandMore />}
+                          </ListItem>
+                          <Collapse in={dropdownOpenServices} timeout="auto" entered={classes.nested} unmountOnExit>
+                            <List component="div" disablePadding>
+                              {navItem.sublinks.map((subNavItem) => (
+                                <Link href={subNavItem.url} key={subNavItem.text}>
+                                  <ListItem button className={classes.nested}>
+                                    <ListItemText primary={subNavItem.text} />
+                                  </ListItem>
+                                </Link>
+                              ))}
+                            </List>
+                          </Collapse>
+                        </List>
+                      );
+                  } else {
                     return (
                       <List key={navItem.text}>
-                        <ListItem button key={navItem.text} onClick={handleDropdownOpen}>
+                        <ListItem button key={navItem.text} onClick={handleDropdownOpenAbout}>
                           <ListItemText primary={navItem.text} />
-                          {dropdownOpen ? <ExpandLess /> : <ExpandMore />}
+                          {dropdownOpenAbout ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
-                        <Collapse in={dropdownOpen} timeout="auto" entered={classes.nested} unmountOnExit>
+                        <Collapse in={dropdownOpenAbout} timeout="auto" entered={classes.nested} unmountOnExit>
                           <List component="div" disablePadding>
                             {navItem.sublinks.map((subNavItem) => (
                               <Link href={subNavItem.url} key={subNavItem.text}>
@@ -190,14 +223,6 @@ export default function Navigation() {
                           </List>
                         </Collapse>
                       </List>
-                    );
-                  } else {
-                    return (
-                      <ListItem button key={navItem.text}>
-                        <Link href={navItem.url}>
-                          <ListItemText primary={navItem.text}></ListItemText>
-                        </Link>
-                      </ListItem>
                     );
                   }
                 })}
