@@ -26,9 +26,9 @@ function AboutFolderList() {
     const classes = useStyles();
     const router = useRouter();
 
-    const about = router.pathname === '/about-us';
-    const overview = router.pathname === '/about-overview';
-    const team = router.pathname === '/about-our-team';
+    const about = router.pathname === '/about/us';
+    const overview = router.pathname === '/about/overview';
+    const team = router.pathname === '/about/our-team';
 
     console.log(router.pathname)
     
@@ -36,7 +36,7 @@ function AboutFolderList() {
     return (
         <List className={classes.root}>
             {!about && (
-                <Link href="/about-us" className={classes.link}>
+                <Link href="/about/us" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
@@ -49,7 +49,7 @@ function AboutFolderList() {
             )}
 
             {!overview && (
-                <Link href="/about-overview" className={classes.link}>
+                <Link href="/about/overview" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
@@ -62,7 +62,7 @@ function AboutFolderList() {
             )}
 
             {!team && (
-                <Link href="/about-our-team" className={classes.link}>
+                <Link href="/about/our-team" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
                         <Avatar>
