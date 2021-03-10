@@ -101,6 +101,9 @@ const useStyles = makeStyles((theme) => ({
     text: {
 
     },
+    gridList: {
+        backgroundColor: '',
+    },
 }));
 
 export { useStyles };

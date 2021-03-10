@@ -5,6 +5,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 import Paper from '@material-ui/core/Paper';
 import Slide from '@material-ui/core/Slide';
 
@@ -17,15 +19,33 @@ import {useStyles} from '../../../styles/AboutStyles'
 export default function Services() {
     const classes = useStyles();
 
+    const contactPeople = [
+        {
+          imgPath: '../logo.png',
+          name: 'George',
+          number: '1234567890',
+          about: 'Matthew is one of Ambcon\'s founders, he has his main office situated in Harare.',
+          email: 'matt@ambconlogistics.com',
+        },
+        {
+            imgPath: '../logo.png',
+            name: 'bob',
+            number: '1234567890',
+            about: 'Matthew is one of Ambcon\'s founders, he has his main office situated in Harare.',
+            email: 'matt@ambconlogistics.com',
+          }
+      ]
+
     function FormRow() {
         return (
           <React.Fragment>
-            <Grid item xs={6}>
-              <ImageCard ></ImageCard>
-            </Grid>
-            <Grid item xs={6}>
-            <ImageCard></ImageCard>
-            </Grid>
+            <GridList className={classes.gridList} spacing={5} cellHeight={240} cols={2}>
+                { contactPeople.map(person => (
+                <GridListTile key={person.imgPath} margin={5} cols={1} rows={2}>
+                    <ImageCard personInfo={person} />
+                </GridListTile>
+                ))}
+            </GridList>
           </React.Fragment>
         );
       }
@@ -49,15 +69,7 @@ export default function Services() {
                 </Typography>
                 <div className={classes.body}>
                     <CardContent className={classes.content} >
-                        <Grid container spacing={1}>
-                            <Grid container item xs={12} spacing={3}>
-                                <FormRow />
-                            </Grid>
-                            <Grid container item xs={12} spacing={3}>
-                                <FormRow />
-                            </Grid>
-                            
-                        </Grid>
+                        <FormRow />
                     </CardContent>
                     <div className={classes.listBox}>
                         <AboutNav></AboutNav>

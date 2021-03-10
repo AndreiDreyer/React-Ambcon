@@ -10,38 +10,47 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 360,
   },
   media: {
-    height: 140,
+    height: 240,
   },
 });
 
 export default function MediaCard(props) {
   const classes = useStyles();
-  const {img} = props;
-  
+  const personInfo = props.personInfo;
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={personInfo.imgPath}
           title="Member"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Matthew Bint
+          <Typography gutterBottom variant="h4" component="h2">
+            {personInfo.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Matthew is one of Ambcon's founders, he has his main office situated in Harare.
+            {personInfo.about}
+          </Typography>
+          <Typography gutterBottom variant="h8" component="h3">
+            Contact Info
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Phone: {personInfo.number}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Email: {personInfo.email}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        {/* <Button size="small" color="primary">
           Contact
-        </Button>
+        </Button> */}
       </CardActions>
     </Card>
   );
