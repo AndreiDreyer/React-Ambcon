@@ -3,7 +3,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { CardContent } from '@material-ui/core';
+import { CardContent } from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Slide from '@material-ui/core/Slide';

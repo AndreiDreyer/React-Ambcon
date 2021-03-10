@@ -9,7 +9,7 @@ import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
 import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
 import TrackChangesIcon from '@material-ui/icons/TrackChanges';
-import { Link } from '@material-ui/core';
+import { Link } from '@material-ui/core/Link';
 import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
@@ -31,9 +31,6 @@ function FolderList() {
     const clearing = router.pathname === '/services/clearing';
     const procurement = router.pathname === '/services/procurement';
     const fullLoad = router.pathname === '/services/full-load';
-
-    console.log(router.pathname)
-    
 
     return (
         <List className={classes.root}>
