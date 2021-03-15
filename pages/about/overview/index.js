@@ -15,7 +15,7 @@ import Head from 'next/head';
 import AboutNav from '../../../components/AboutNav'
 import Navigation from '../../../components/Navigation'
 import Footer from '../../../components/Footer'
-import {useStyles} from '../../../styles/ServiceStyles'
+import {useStyles} from '../../../styles/AboutStyles'
 
 export default function Services() {
     const classes = useStyles();
@@ -29,7 +29,7 @@ export default function Services() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.media}
-                        image="../trucking-banner.jpg"
+                        image="../Desktop - 7@2x.png"
                         title="Banner Image"
                         />
                 </Card>

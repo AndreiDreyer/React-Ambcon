@@ -1,4 +1,6 @@
 import React from "react";
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
 
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
@@ -12,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100vh",
   },
   quoteForm: {
-    paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
     marginLeft: "25%",
     marginRight: "25%",
@@ -22,12 +23,31 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   page: {
-    paddingTop: 173,
+    paddingTop: 126,
     paddingBottom: 377,
     [theme.breakpoints.down("sm")]: {
       paddingBottom: 723,
       paddingTop: 0,
     },
+  },
+  mainContainer: {
+    width: '100%',
+  },
+  bannerDiv: {
+      flexGrow: 1,
+      width: '100%',
+      height: 800,
+  },
+  card: {
+      flexGrow: 1,
+      border: 'none',
+      boxShadow: 'none',
+      width: '100%',
+      height: '100%',
+  },
+  media: {
+      width: '100%',
+      height: '80%',
   },
 }));
 
@@ -40,6 +60,15 @@ export default function Quote() {
         <div>
           <Navigation />
         </div>
+        <div className={classes.bannerDiv}>
+                <Card className={classes.card}>
+                    <CardMedia
+                        className={classes.media}
+                        image="../Desktop - 3@2x.png"
+                        title="Contemplative Reptile"
+                        />
+                </Card>
+            </div>
         <div className={classes.quoteForm}>
           <QuoteForm />
         </div>

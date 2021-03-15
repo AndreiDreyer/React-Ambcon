@@ -8,21 +8,14 @@ const useStyles = makeStyles({
     bannerDiv: {
         flexGrow: 1,
         width: '100%',
-        [theme.breakpoints.up('1024')]: {
-        height: 215,
-        },
-        [theme.breakpoints.up('lg')]: {
-        height: 215,
-        marginBottom: 86,
-        },
-        [theme.breakpoints.up('xl')]: {
-        height: 215,
-        marginBottom: 86,
-        },
+        height: 800,
     },
     card: {
         flexGrow: 1,
+        border: 'none',
+        boxShadow: 'none',
         width: '100%',
+        height: '100%',
         [theme.breakpoints.down('sm')]: {
         },
         [theme.breakpoints.up('md')]: {
@@ -30,7 +23,8 @@ const useStyles = makeStyles({
         },
     },
     media: {
-        height: 400,
+        width: '100%',
+        height: '80%',
     },
     body: {
         flexGrow: 1,
@@ -39,7 +33,7 @@ const useStyles = makeStyles({
             width: '100%',
         },
         [theme.breakpoints.up('1024')]: {
-            marginLeft: '22%',
+            marginLeft: '20%',
             marginRight: '18%',
             
         },
@@ -51,13 +45,14 @@ const useStyles = makeStyles({
         color: 'white',
         backgroundColor: '#5eac3f',
         paddingLeft: 20,
-        paddingBottom: 20,
+        paddingBottom: 10,
+        paddingTop: 10,
 
         [theme.breakpoints.down('769')]: {
             width: '100%',
         },
         [theme.breakpoints.up('1024')]: {
-            marginLeft: '22%',
+            marginLeft: '20%',
             marginRight: '18%',
         },
     },
@@ -80,7 +75,8 @@ const useStyles = makeStyles({
         },
         [theme.breakpoints.up('1024')]: {
             float: 'left',
-            maxWidth: '60%',
+            minWidth: '65%',
+            maxWidth: '75%',
         },
     },
     listBox: {
@@ -90,20 +86,12 @@ const useStyles = makeStyles({
         [theme.breakpoints.up('1024')]: {
             alignSelf: 'right',
             float: 'right',
-            maxWidth: '40%',
+            maxWidth: '25%',
         },
     },
     bodyBlock: {
         marginBottom: '15%',
-        [theme.breakpoints.down('769')]: {
-            marginTop: '2%',
-        },
-        [theme.breakpoints.up('1024')]: {
-            marginTop: '20%',
-        },
-        [theme.breakpoints.up('1280')]: {
-            marginTop: '11%',
-        },
+        marginTop: '-6%',
     },
     footer: {
         marginTop: 10,

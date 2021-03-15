@@ -80,6 +80,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     paddingBottom: theme.spacing(2),
   },
+  formHeader: {
+    fontFamily: 'Oswald Regular',
+    color: '#5eac3f',
+    fontSize: '2rem',
+    textAlign: 'center',
+  },
 }));
 
 export default function QuoteForm() {
@@ -139,7 +145,7 @@ export default function QuoteForm() {
     <form onSubmit={handleSubmit} border={1} className={classes.quoteForm}>
       <div style={{ fontSize: "1.3rem" }} className={classes.innerQuoteForm}>
         <div className={classes.topInfo}>
-          <Typography>Enter the requried information below to generate a quote</Typography>
+        <Typography className={classes.formHeader} variant="h1" paragraph='true' gutterBottom>Enter the requried information below to generate a quote</Typography>
         </div>
         <div className={classes.textfieldDiv}></div>
         <TextField

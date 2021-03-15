@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.MuiCardMedia-root {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

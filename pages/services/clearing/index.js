@@ -21,7 +21,7 @@ export default function Services() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.media}
-                        image="../trucking-banner.jpg"
+                        image="../Desktop - 5@2x.png"
                         title="Banner Image"
                         />
                 </Card>
