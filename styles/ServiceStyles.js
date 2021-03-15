@@ -7,24 +7,32 @@ const useStyles = makeStyles({
     },
     bannerDiv: {
         flexGrow: 1,
-        width: '100%',
         height: 800,
+        width: '100%',
     },
     card: {
         flexGrow: 1,
         border: 'none',
         boxShadow: 'none',
-        width: '100%',
         height: '100%',
         [theme.breakpoints.down('sm')]: {
+            width: '100%',
         },
         [theme.breakpoints.up('md')]: {
+            width: '100%',
             marginTop: 126,
         },
     },
     media: {
-        width: '100%',
-        height: '80%',
+        [theme.breakpoints.down('760')]: {
+            height: '100%',
+            width: '140%',
+            marginLeft: '-20% ',
+        },
+        [theme.breakpoints.up('765')]: {
+            height: '80%',
+            width: '100%',
+        },
     },
     body: {
         flexGrow: 1,
@@ -90,8 +98,23 @@ const useStyles = makeStyles({
         },
     },
     bodyBlock: {
-        marginBottom: '15%',
-        marginTop: '-6%',
+        [theme.breakpoints.down('440')]: {
+            marginBottom: '15%',
+            marginTop: '-80% !important',
+        },
+        [theme.breakpoints.down('769')]: {
+            marginBottom: '15%',
+            marginTop: '-20%',
+        },
+        [theme.breakpoints.up('1020')]: {
+            marginBottom: '15%',
+            marginTop: '-15%',
+        },
+        [theme.breakpoints.up('1200')]: {
+            marginBottom: '15%',
+            marginTop: '-8%',
+        },
+
     },
     footer: {
         marginTop: 10,

@@ -29,11 +29,47 @@ const useStyles = makeStyles((theme) => ({
       },
   },
   media: {
-      width: '100%',
-      height: '80%',
+    flexGrow: 1,
+    [theme.breakpoints.down('380')]: {
+        height: '65% !important',
+        width: '360% !important',
+        marginLeft: '0% !important',
+    },
+    [theme.breakpoints.down('541')]: {
+        height: '65%',
+        width: '340%',
+        marginLeft: '0%',
+    },
+    [theme.breakpoints.up('760')]: {
+        height: '100%',
+        width: '300%',
+    },
+    [theme.breakpoints.up('1020')]: {
+        height: '100%',
+        width: '295%',
+    },
+    [theme.breakpoints.up('1200')]: {
+        height: '80%',
+        width: '100%',
+    },
   },
   body: {
-    marginTop: '-8%',
+    [theme.breakpoints.down('440')]: {
+      marginBottom: '15%',
+      marginTop: '-90% !important',
+  },
+  [theme.breakpoints.down('769')]: {
+      marginBottom: '15%',
+      marginTop: '-20%',
+  },
+  [theme.breakpoints.up('1020')]: {
+      marginBottom: '15%',
+      marginTop: '-15%',
+  },
+  [theme.breakpoints.up('1200')]: {
+      marginBottom: '15%',
+      marginTop: '-8%',
+  },
   },
 }));
 

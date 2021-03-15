@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { customTheme as theme } from '../src/theme';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     mainContainer: {
         width: '100%',
     },
@@ -14,17 +14,39 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         border: 'none',
         boxShadow: 'none',
-        width: '100%',
         height: '100%',
         [theme.breakpoints.down('sm')]: {
+            width: '100%',
         },
         [theme.breakpoints.up('md')]: {
-        marginTop: 126,
+            width: '100%',
+            marginTop: 126,
         },
     },
     media: {
-        width: '100%',
-        height: '80%',
+        flexGrow: 1,
+        [theme.breakpoints.down('380')]: {
+            height: '65% !important',
+            width: '360% !important',
+            marginLeft: '0% !important',
+        },
+        [theme.breakpoints.down('440')]: {
+            height: '65%',
+            width: '340%',
+            marginLeft: '0%',
+        },
+        [theme.breakpoints.up('760')]: {
+            height: '100%',
+            width: '320%',
+        },
+        [theme.breakpoints.up('1020')]: {
+            height: '100%',
+            width: '300%',
+        },
+        [theme.breakpoints.up('1200')]: {
+            height: '80%',
+            width: '100%',
+        },
     },
     body: {
         flexGrow: 1,
@@ -46,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
 
         [theme.breakpoints.down('769')]: {
             width: '100%',
+            paddingLeft: 10,
         },
         [theme.breakpoints.up('1024')]: {
             marginLeft: '15%',
@@ -83,7 +106,22 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     bodyBlock: {
-        marginTop: '-6%',
+        [theme.breakpoints.down('440')]: {
+            marginBottom: '15%',
+            marginTop: '-90% !important',
+        },
+        [theme.breakpoints.down('769')]: {
+            marginBottom: '15%',
+            marginTop: '-20%',
+        },
+        [theme.breakpoints.up('1020')]: {
+            marginBottom: '15%',
+            marginTop: '-15%',
+        },
+        [theme.breakpoints.up('1200')]: {
+            marginBottom: '15%',
+            marginTop: '-8%',
+        },
     },
     text: {
 
@@ -95,6 +133,6 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: '10%',
         },
     },
-}));
+});
 
 export { useStyles };
