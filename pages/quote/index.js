@@ -96,7 +96,7 @@ export default function Quote() {
                     <CardMedia
                         className={classes.media}
                         image="../Desktop - 3@2x.png"
-                        title="Contemplative Reptile"
+                        title="Banner Image"
                         />
                 </Card>
             </div>

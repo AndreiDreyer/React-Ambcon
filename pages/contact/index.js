@@ -87,7 +87,7 @@ function Contact() {
                     <CardMedia
                         className={classes.media}
                         image="../Desktop - 2@2x.png"
-                        title="Contemplative Reptile"
+                        title="Banner Image"
                         />
                 </Card>
             </div>

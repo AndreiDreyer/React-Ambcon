@@ -28,7 +28,7 @@ export default function Services() {
                     <CardMedia
                         className={classes.media}
                         image="../Desktop - 5@2x.png"
-                        title="Contemplative Reptile"
+                        title="Banner Image"
                         />
                 </Card>
             </div>
