@@ -1,6 +1,4 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
 import Slide from '@material-ui/core/Slide';
@@ -15,16 +13,10 @@ export default function Services() {
 
     return (
         <div className={classes.mainContainer}>
-            <Navigation></Navigation>
             <div className={classes.bannerDiv}>
-                <Card className={classes.card}>
-                    <CardMedia
-                        className={classes.media}
-                        image="../Desktop - 5@2x.png"
-                        title="Banner Image"
-                        />
-                </Card>
-            </div>
+                  <Navigation />
+                  <img src="../Desktop - 7@2x.png" className={classes.bannerDiv} />
+              </div>
             <Slide direction="up" in={true}  unmountOnExit>
                 <div className={classes.bodyBlock}>
                     <Typography className={classes.headers} gutterBottom variant="h3" component="h1">
