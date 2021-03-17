@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "white",
     display: "flex",
-    overflowX: "auto",
+    overflow: "hidden",
   },
   menuButton: {
     color: "#007cc4",
@@ -198,25 +198,25 @@ export default function Navigation() {
                       </ListItem>
                     );
                   } else if (navItem.text === "Services") {
-                      return (
-                        <List key={navItem.text}>
-                          <ListItem button key={navItem.text} onClick={handleDropdownOpenSerices}>
-                            <ListItemText primary={navItem.text} />
-                            {dropdownOpenServices ? <ExpandLess /> : <ExpandMore />}
-                          </ListItem>
-                          <Collapse in={dropdownOpenServices} timeout="auto" entered={classes.nested} unmountOnExit>
-                            <List component="div" disablePadding>
-                              {navItem.sublinks.map((subNavItem) => (
-                                <Link href={subNavItem.url} key={subNavItem.text}>
-                                  <ListItem button className={classes.nested}>
-                                    <ListItemText primary={subNavItem.text} />
-                                  </ListItem>
-                                </Link>
-                              ))}
-                            </List>
-                          </Collapse>
-                        </List>
-                      );
+                    return (
+                      <List key={navItem.text}>
+                        <ListItem button key={navItem.text} onClick={handleDropdownOpenSerices}>
+                          <ListItemText primary={navItem.text} />
+                          {dropdownOpenServices ? <ExpandLess /> : <ExpandMore />}
+                        </ListItem>
+                        <Collapse in={dropdownOpenServices} timeout="auto" entered={classes.nested} unmountOnExit>
+                          <List component="div" disablePadding>
+                            {navItem.sublinks.map((subNavItem) => (
+                              <Link href={subNavItem.url} key={subNavItem.text}>
+                                <ListItem button className={classes.nested}>
+                                  <ListItemText primary={subNavItem.text} />
+                                </ListItem>
+                              </Link>
+                            ))}
+                          </List>
+                        </Collapse>
+                      </List>
+                    );
                   } else {
                     return (
                       <List key={navItem.text}>
