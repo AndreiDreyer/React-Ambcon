@@ -3,7 +3,6 @@ import { ReCaptcha } from "react-recaptcha-google";
 import scriptLoader from "react-async-script-loader";
 
 const RECAPTCHA_KEY = process.env.RECAPTCHA_KEY;
-console.log(RECAPTCHA_KEY);
 var captcha = false;
 
 function ReCaptchaComp() {
