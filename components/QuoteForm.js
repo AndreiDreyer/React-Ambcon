@@ -23,12 +23,6 @@ const useStyles = makeStyles((theme) => ({
   quoteForm: {
     display: "block",
     width: "100%",
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: 0,
-    },
-    [theme.breakpoints.down(420)]: {
-      width: "90%",
-    },
   },
   quoteDiv: {
     margin: "1rem",
