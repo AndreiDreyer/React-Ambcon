@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   serviceImage: {
     maxHeight: 175,
+    cursor: "pointer",
   },
   serviceTitle: {
     maxHeight: "75px",
