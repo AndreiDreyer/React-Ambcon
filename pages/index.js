@@ -19,19 +19,22 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100vh",
   },
   container: {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
     textAlign: "center",
-    paddingBottom: 377,
+    // paddingBottom: 377,
+    paddingBottom: theme.spacing(2),
     [theme.breakpoints.down(767)]: {
       paddingBottom: 723,
     },
     [theme.breakpoints.up("md")]: {
-      paddingTop: 173,
+      paddingTop: 133,
     },
   },
   servicesContainer: {
     height: "100%",
+  },
+  secondContainer: {
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
   },
   serviceImage: {
     maxHeight: 175,
@@ -99,36 +102,38 @@ export default function Home() {
       <Navigation />
       <div className={classes.container}>
         <div className={classes.bannerImage}>
-          <img src="Banners/Desktop - 1.png" className={classes.bannerImage} />
+          <img src="Banners/Desktop - 1@2x.png" className={classes.bannerImage} />
         </div>
-        <div className={classes.intorParagraph}>
-          <h1>The who's who in Logistics</h1>
-          <p className={classes.introText}>
-            Ambcon Logistics specialises in a wide spectrum of transport services including full-load, consolidation, transport broking and
-            procurement services. With an ample fleet of forty-eight horses and 65 super link trailers, of which 24 are taut liners. Ambcon Logistics
-            are well placed to meet your transporting needs. In addition we enjoy strong working relationships with a group of reliable transport
-            operators who we sub-contract where necessary.
-          </p>
-        </div>
-        <div className={classes.servicesContainer}>
-          <GridList cellHeight={250} cols={numCols()} spacing={12}>
-            <GridListTile cols={numCols()} row={2} className={classes.serviceTitle}>
-              <div>
-                <h3>Services</h3>
-              </div>
-            </GridListTile>
-            {services.map((service) => (
-              <GridListTile key={service.serviceName}>
-                <Link key={service.serviceName} href={service.serviceUrl}>
-                  <img src={service.imgUrl} className={classes.serviceImage} />
-                </Link>
-                <GridListTileBar title={service.serviceName} />
+        <div className={classes.secondContainer}>
+          <div className={classes.intorParagraph}>
+            <h1>The who's who in Logistics</h1>
+            <p className={classes.introText}>
+              Ambcon Logistics specialises in a wide spectrum of transport services including full-load, consolidation, transport broking and
+              procurement services. With an ample fleet of forty-eight horses and 65 super link trailers, of which 24 are taut liners. Ambcon
+              Logistics are well placed to meet your transporting needs. In addition we enjoy strong working relationships with a group of reliable
+              transport operators who we sub-contract where necessary.
+            </p>
+          </div>
+          <div className={classes.servicesContainer}>
+            <GridList cellHeight={250} cols={numCols()} spacing={12}>
+              <GridListTile cols={numCols()} row={2} className={classes.serviceTitle}>
+                <div>
+                  <h3>Services</h3>
+                </div>
               </GridListTile>
-            ))}
-          </GridList>
-        </div>
-        <div className={classes.paragraphTwo}>
-          <ContactForm />
+              {services.map((service) => (
+                <GridListTile key={service.serviceName}>
+                  <Link key={service.serviceName} href={service.serviceUrl}>
+                    <img src={service.imgUrl} className={classes.serviceImage} />
+                  </Link>
+                  <GridListTileBar title={service.serviceName} />
+                </GridListTile>
+              ))}
+            </GridList>
+          </div>
+          <div className={classes.paragraphTwo}>
+            <ContactForm />
+          </div>
         </div>
       </div>
       <Footer />
