@@ -22,16 +22,10 @@ export default function Services() {
 
     return (
         <div className={classes.mainContainer}>
-            <Navigation></Navigation>
             <div className={classes.bannerDiv}>
-                <Card className={classes.card}>
-                    <CardMedia
-                        className={classes.media}
-                        image="../Desktop - 7@2x.png"
-                        title="Banner Image"
-                        />
-                </Card>
-            </div>
+                  <Navigation />
+                  <img src="../Desktop - 7@2x.png" className={classes.bannerDiv} />
+              </div>
             <Slide direction="up" in={true}  unmountOnExit>
             <div className={classes.bodyBlock}>
                 <Typography className={classes.headers} variant="h4" component="h1">

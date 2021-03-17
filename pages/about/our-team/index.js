@@ -68,32 +68,28 @@ export default function Services() {
 
     return (
         <div className={classes.mainContainer}>
-            <Navigation></Navigation>
-            <div className={classes.bannerDiv}>
-                <Card className={classes.card}>
-                    <CardMedia
-                        className={classes.media}
-                        image="../Desktop - 7@2x.png"
-                        title="Banner Image"
-                        />
-                </Card>
+            <div className={classes.container}>
+              <div className={classes.bannerDiv}>
+                  <Navigation />
+                  <img src="../Desktop - 7@2x.png" className={classes.bannerDiv} />
+              </div>
+              <Slide direction="up" in={true}  unmountOnExit>
+              <div className={classes.bodyBlock}>
+                  <Typography className={classes.headers} variant="h4" component="h1">
+                      Our Team
+                  </Typography>
+                  <div className={classes.body}>
+                      <CardContent className={classes.content} >
+                          <FormRow />
+                      </CardContent>
+                      <div className={classes.listBox}>
+                          <AboutNav />
+                      </div>
+                  </div>
+              </div>    
+              </Slide>
+            <Footer />
             </div>
-            <Slide direction="up" in={true}  unmountOnExit>
-            <div className={classes.bodyBlock}>
-                <Typography className={classes.headers} variant="h4" component="h1">
-                    Our Team
-                </Typography>
-                <div className={classes.body}>
-                    <CardContent className={classes.content} >
-                        <FormRow />
-                    </CardContent>
-                    <div className={classes.listBox}>
-                        <AboutNav></AboutNav>
-                    </div>
-                </div>
-            </div>    
-            </Slide>
-            <Footer></Footer>
         </div>
     );
 }
