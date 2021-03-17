@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     textAlign: "center",
-    // paddingBottom: 377,
     paddingBottom: theme.spacing(2),
     [theme.breakpoints.down(767)]: {
       paddingBottom: 723,
