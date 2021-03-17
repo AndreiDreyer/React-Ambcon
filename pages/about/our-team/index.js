@@ -4,10 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import Paper from '@material-ui/core/Paper';
 import Slide from '@material-ui/core/Slide';
 
 import AboutNav from '../../../components/AboutNav'
@@ -15,9 +13,27 @@ import ImageCard from '../../../components/ImageCard'
 import Navigation from '../../../components/Navigation'
 import Footer from '../../../components/Footer'
 import {useStyles} from '../../../styles/AboutStyles'
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 export default function Services() {
     const classes = useStyles();
+    const theme = useTheme();
+
+    const sm = useMediaQuery(theme.breakpoints.down('sm'));
+    const md = useMediaQuery(theme.breakpoints.down('md'));
+    const xlg = useMediaQuery(theme.breakpoints.down('xl'));
+
+    const mdUp = useMediaQuery(theme.breakpoints.up('md'));
+    const ipad = useMediaQuery(theme.breakpoints.down(769));
+    const ipadUp = useMediaQuery(theme.breakpoints.up(768));
+
+    const numCols = () => {
+        if ((ipad && ipadUp) || (sm || md)) {
+          return 2;
+        } else if (xlg) {
+          return 4;
+        }
+      };
 
     const contactPeople = [
         {
@@ -39,9 +55,9 @@ export default function Services() {
     function FormRow() {
         return (
           <React.Fragment>
-            <GridList className={classes.gridList} spacing={5} cellHeight={240} cols={2}>
+            <GridList className={classes.gridList} spacing={5} cellHeight={240} cols={numCols()}>
                 { contactPeople.map(person => (
-                <GridListTile key={person.imgPath} margin={5} cols={1} rows={2}>
+                <GridListTile key={person.imgPath} margin={5} cols={2} rows={2}>
                     <ImageCard personInfo={person} />
                 </GridListTile>
                 ))}
@@ -57,7 +73,7 @@ export default function Services() {
                 <Card className={classes.card}>
                     <CardMedia
                         className={classes.media}
-                        image="../trucking-banner.jpg"
+                        image="../Desktop - 7@2x.png"
                         title="Banner Image"
                         />
                 </Card>
