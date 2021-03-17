@@ -21,11 +21,12 @@ const useStyles = makeStyles((theme) => ({
   container: {
     textAlign: "center",
     paddingBottom: theme.spacing(2),
+    paddingTop: 62,
     [theme.breakpoints.down(767)]: {
       paddingBottom: 723,
     },
     [theme.breakpoints.up("md")]: {
-      paddingTop: 133,
+      paddingTop: 62,
     },
   },
   servicesContainer: {
