@@ -28,11 +28,7 @@ export default function Services() {
     const ipadUp = useMediaQuery(theme.breakpoints.up(768));
 
     const numCols = () => {
-        if (ipad && ipadUp) {
-          return 2;
-        } else if (sm) {
-          return 2;
-        } else if (md) {
+        if ((ipad && ipadUp) || (sm || md)) {
           return 2;
         } else if (xlg) {
           return 4;
