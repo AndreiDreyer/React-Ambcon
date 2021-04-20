@@ -21,12 +21,12 @@ const useStyles = makeStyles((theme) => ({
   container: {
     textAlign: "center",
     paddingBottom: theme.spacing(2),
-    paddingTop: 62,
+    paddingTop: 128,
     [theme.breakpoints.down(767)]: {
       paddingBottom: 723,
     },
     [theme.breakpoints.up("md")]: {
-      paddingTop: 62,
+      paddingTop: 128,
     },
   },
   servicesContainer: {
@@ -45,11 +45,19 @@ const useStyles = makeStyles((theme) => ({
   },
   introText: {
     lineHeight: "1.7rem",
+    fontFamily: '"Poppins", sans-serif',
+    fontWeight: 300,
+    color: "#2C3539",
   },
   bannerImage: {
     width: "100%",
     maxWidth: "100%",
     margin: 0,
+  },
+  titleText: {
+    fontFamily: '"Poppins", sans-serif',
+    fontWeight: 500,
+    fontSize: "2rem",
   },
 }));
 
@@ -107,7 +115,7 @@ export default function Home() {
         </div>
         <div className={classes.secondContainer}>
           <div className={classes.intorParagraph}>
-            <h1>The who's who in Logistics</h1>
+            <h1 className={classes.titleText}>The who's who in Logistics</h1>
             <p className={classes.introText}>
               Ambcon Logistics specialises in a wide spectrum of transport services including full-load, consolidation, transport broking and
               procurement services. With an ample fleet of forty-eight horses and 65 super link trailers, of which 24 are taut liners. Ambcon
