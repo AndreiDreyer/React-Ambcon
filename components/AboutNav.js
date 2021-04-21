@@ -36,7 +36,7 @@ function AboutFolderList() {
                 <Link href="/about/us" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar style={{ backgroundColor: "#5eac3f"}}>
                                 <InfoIcon />
                             </Avatar>
                         </ListItemAvatar>
@@ -49,7 +49,7 @@ function AboutFolderList() {
                 <Link href="/about/overview" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
-                        <Avatar>
+                        <Avatar style={{ backgroundColor: "#5eac3f"}}>
                             <PublicIcon />
                         </Avatar>
                         </ListItemAvatar>
@@ -62,7 +62,7 @@ function AboutFolderList() {
                 <Link href="/about/our-team" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
-                        <Avatar>
+                        <Avatar style={{ backgroundColor: "#5eac3f"}}>
                             <PeopleOutlineIcon />
                         </Avatar>
                         </ListItemAvatar>

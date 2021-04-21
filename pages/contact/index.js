@@ -34,7 +34,7 @@ function Contact() {
         </Head>
         <div className={classes.bannerDiv}>
                   <Navigation />
-                  <img src="../Desktop - 7@2x.png" className={classes.bannerDiv} />
+                  <img src="../Desktop - 5@2x.png" className={classes.bannerDiv} />
               </div>
         <div className={classes.body}>
           <ContactForm />

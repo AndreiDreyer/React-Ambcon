@@ -22,7 +22,7 @@ export default function Services() {
         <div className={classes.mainContainer}>
            <div className={classes.bannerDiv}>
                   <Navigation />
-                  <img src="../Desktop - 7@2x.png" className={classes.bannerDiv} />
+                  <img src="../Desktop - 4@2x.png" className={classes.bannerDiv} />
               </div>
             <Slide direction="up" in={true}  unmountOnExit>
                 <div className={classes.bodyBlock}>
