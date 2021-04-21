@@ -1,4 +1,6 @@
-import Grid from "@material-ui/core/Grid";
+import Link from "next/link";
+
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import clsx from "clsx";
 
@@ -14,6 +16,13 @@ const useStyles = makeStyles((theme) => ({
       cursor: "pointer",
       "& $innerCard": {
         transform: "rotateY(180deg)",
+      },
+    },
+    [theme.breakpoints.down(1024)]: {
+      "&:focus": {
+        "& $innerCard": {
+          transform: "rotateY(180deg)",
+        },
       },
     },
   },
@@ -61,6 +70,8 @@ export default function ServiceItem(props) {
   const classes = useStyles();
   const theme = useTheme();
 
+  const mobileBreakpoint = useMediaQuery(theme.breakpoints.down(1025));
+
   return (
     <div className={classes.root}>
       <div className={classes.innerCard}>
@@ -76,6 +87,7 @@ export default function ServiceItem(props) {
           </div>
           <div className={classes.descText}>
             <p>{props.shortDesc}</p>
+            {mobileBreakpoint && <Link href={props.serviceUrl}>Go to Service</Link>}
           </div>
         </div>
       </div>

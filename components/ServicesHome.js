@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import ServiceItem from "../components/ServiceItem";
+
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -55,16 +57,34 @@ const services = [
 
 export default function ServicesHome(props) {
   const classes = useStyles();
+  const theme = useTheme();
+
+  const mobileBreakpoint = useMediaQuery(theme.breakpoints.down(1025));
 
   return (
     <div className={classes.root}>
-      {services.map((service) => (
-        <Link href={service.serviceUrl} key={service.serviceName}>
-          <div className={classes.serviceItem}>
-            <ServiceItem serviceName={service.serviceName} serviceImage={service.imgUrl} shortDesc={service.shortDesc} />
-          </div>
-        </Link>
-      ))}
+      {services.map((service) => {
+        if (mobileBreakpoint) {
+          return (
+            <div className={classes.serviceItem}>
+              <ServiceItem
+                serviceName={service.serviceName}
+                serviceImage={service.imgUrl}
+                shortDesc={service.shortDesc}
+                serviceUrl={service.serviceUrl}
+              />
+            </div>
+          );
+        } else {
+          return (
+            <Link href={service.serviceUrl} key={service.serviceName}>
+              <div className={classes.serviceItem}>
+                <ServiceItem serviceName={service.serviceName} serviceImage={service.imgUrl} shortDesc={service.shortDesc} />
+              </div>
+            </Link>
+          );
+        }
+      })}
     </div>
   );
 }
