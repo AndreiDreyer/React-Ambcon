@@ -5,14 +5,10 @@ import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import ContactForm from "../components/ContactForm";
 
-import Grid from "@material-ui/core/Grid";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import ServicesHome from "../components/ServicesHome";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,6 +56,11 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: '"Poppins", sans-serif',
     fontWeight: 500,
     fontSize: "2rem",
+  },
+  servicesTitle: {
+    fontFamily: '"Poppins", sans-serif',
+    fontWeight: 500,
+    fontSize: "1.7rem",
   },
 }));
 
@@ -124,24 +125,8 @@ export default function Home() {
             </p>
           </div>
           <div className={classes.servicesContainer}>
-            <Grid orientation="row">
-              <Grid item></Grid>
-            </Grid>
-            <GridList cellHeight={250} cols={numCols()} spacing={12}>
-              <GridListTile cols={numCols()} row={2} className={classes.serviceTitle}>
-                <div>
-                  <h3>Services</h3>
-                </div>
-              </GridListTile>
-              {services.map((service) => (
-                <GridListTile key={service.serviceName}>
-                  <Link key={service.serviceName} href={service.serviceUrl}>
-                    <img src={service.imgUrl} className={classes.serviceImage} />
-                  </Link>
-                  <GridListTileBar title={service.serviceName} />
-                </GridListTile>
-              ))}
-            </GridList>
+            <h2 className={classes.servicesTitle}>Our Services</h2>
+            <ServicesHome />
           </div>
           <div className={classes.paragraphTwo}>
             <ContactForm />
