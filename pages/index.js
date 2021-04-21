@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import ContactForm from "../components/ContactForm";
 
+import Grid from "@material-ui/core/Grid";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
@@ -100,8 +101,6 @@ export default function Home() {
       return 2;
     } else if (sm) {
       return 1;
-    } else if (md) {
-      return 4;
     } else {
       return 4;
     }
@@ -125,6 +124,9 @@ export default function Home() {
             </p>
           </div>
           <div className={classes.servicesContainer}>
+            <Grid orientation="row">
+              <Grid item></Grid>
+            </Grid>
             <GridList cellHeight={250} cols={numCols()} spacing={12}>
               <GridListTile cols={numCols()} row={2} className={classes.serviceTitle}>
                 <div>
