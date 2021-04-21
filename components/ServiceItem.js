@@ -9,9 +9,6 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     perspective: "40rem",
-    // backgroundColor: "transparent",
-    // border: "1px solid #f1f1f1",
-    // perspective: "40rem",
     "&:hover": {
       cursor: "pointer",
       "& $innerCard": {
@@ -64,6 +61,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.1rem",
     lineHeight: "1.5rem",
   },
+  serviceLink: {
+    textDecoration: "underline",
+    fontWeight: 500,
+    fontSize: "1.15rem",
+  },
 }));
 
 export default function ServiceItem(props) {
@@ -87,7 +89,11 @@ export default function ServiceItem(props) {
           </div>
           <div className={classes.descText}>
             <p>{props.shortDesc}</p>
-            {mobileBreakpoint && <Link href={props.serviceUrl}>Go to Service</Link>}
+            {mobileBreakpoint && (
+              <Link href={props.serviceUrl}>
+                <p className={classes.serviceLink}>Go to Service</p>
+              </Link>
+            )}
           </div>
         </div>
       </div>
