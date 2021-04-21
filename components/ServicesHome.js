@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import ServiceItem from "../components/ServiceItem";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
@@ -57,9 +59,11 @@ export default function ServicesHome(props) {
   return (
     <div className={classes.root}>
       {services.map((service) => (
-        <div className={classes.serviceItem} key={service.serviceName}>
-          <ServiceItem serviceName={service.serviceName} serviceImage={service.imgUrl} shortDesc={service.shortDesc} />
-        </div>
+        <Link href={service.serviceUrl} key={service.serviceName}>
+          <div className={classes.serviceItem}>
+            <ServiceItem serviceName={service.serviceName} serviceImage={service.imgUrl} shortDesc={service.shortDesc} />
+          </div>
+        </Link>
       ))}
     </div>
   );
