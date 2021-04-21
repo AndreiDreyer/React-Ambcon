@@ -51,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     width: "200px",
     marginTop: "0.3rem",
     marginBottom: "0.3rem",
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   navbarLinks: {
     display: "flex",
@@ -172,7 +175,9 @@ export default function Navigation() {
     <div className={classes.root}>
       {!mdUp && (
         <Toolbar className={classes.toolbarStyle}>
-          <img src="../../Ambcom-logo@2x.png" className={classes.navbarLogo} />
+          <Link href="/">
+            <img src="../../Ambcom-logo@2x.png" className={classes.navbarLogo} />
+          </Link>
           <IconButton aria-label="open-drawer" edge="start" onClick={handleDrawerToggle} className={classes.menuButton}>
             <MenuIcon className={classes.hamburgerIcon} />
           </IconButton>
@@ -249,7 +254,9 @@ export default function Navigation() {
         <Hidden xsDown implementation="css">
           <AppBar className={classes.appBar} elevation={1}>
             <Toolbar>
-              <img src="../../Ambcom-logo@2x.png" className={classes.navbarLogo} />
+              <Link href="/">
+                <img src="../../Ambcom-logo@2x.png" className={classes.navbarLogo} />
+              </Link>
               <div className={classes.navbarLinks}>
                 {navigationItems.map((navItem) => {
                   if (typeof navItem.sublinks === "undefined") {
