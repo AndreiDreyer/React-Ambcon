@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "1rem",
     paddingRight: "1rem",
     paddingBottom: "1rem",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down(768)]: {
       flex: "100%",
     },
     [theme.breakpoints.up(1680)]: {

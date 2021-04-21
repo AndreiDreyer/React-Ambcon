@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     transformStyle: "preserve-3d",
     transition: "0.8s transform",
+    [theme.breakpoints.down(415)]: {
+      display: "block",
+      height: "375px",
+    },
   },
   bottomText: {
     backgroundColor: "#003c5e",
