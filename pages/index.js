@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
   container: {
     textAlign: "center",
     paddingBottom: theme.spacing(2),
-    paddingTop: 128,
+    paddingTop: 0,
     [theme.breakpoints.down(767)]: {
       paddingBottom: 723,
     },
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up("sm")]: {
       paddingTop: 128,
     },
   },
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: '"Poppins", sans-serif',
     fontWeight: 300,
     color: "#2C3539",
+    fontSize: "1.2rem",
   },
   bannerImage: {
     width: "100%",

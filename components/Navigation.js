@@ -38,7 +38,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     margin: theme.spacing(2),
     width: "100px",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down(890)]: {
+      marginLeft: 0,
+    },
+    [theme.breakpoints.down(769)]: {
       marginLeft: "auto",
       marginRight: 0,
       width: 24,
@@ -125,7 +128,7 @@ export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
 
-  const mdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const mdUp = useMediaQuery(theme.breakpoints.up("sm"));
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -169,7 +172,7 @@ export default function Navigation() {
     <div className={classes.root}>
       {!mdUp && (
         <Toolbar className={classes.toolbarStyle}>
-          <img src="../../Ambcon-logo@2x.png" className={classes.navbarLogo} />
+          <img src="../../Ambcom-logo@2x.png" className={classes.navbarLogo} />
           <IconButton aria-label="open-drawer" edge="start" onClick={handleDrawerToggle} className={classes.menuButton}>
             <MenuIcon className={classes.hamburgerIcon} />
           </IconButton>
