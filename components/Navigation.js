@@ -38,7 +38,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     margin: theme.spacing(2),
     width: "100px",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down(890)]: {
+      marginLeft: 0,
+    },
+    [theme.breakpoints.down(769)]: {
       marginLeft: "auto",
       marginRight: 0,
       width: 24,
@@ -46,8 +49,11 @@ const useStyles = makeStyles((theme) => ({
   },
   navbarLogo: {
     width: "200px",
-    marginTop: "-0.5%",
-    marginBottom: "-0.4%",
+    marginTop: "0.3rem",
+    marginBottom: "0.3rem",
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   navbarLinks: {
     display: "flex",
@@ -125,7 +131,7 @@ export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
 
-  const mdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const mdUp = useMediaQuery(theme.breakpoints.up("sm"));
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -169,7 +175,9 @@ export default function Navigation() {
     <div className={classes.root}>
       {!mdUp && (
         <Toolbar className={classes.toolbarStyle}>
-          <img src="../../logo.png" className={classes.navbarLogo} />
+          <Link href="/">
+            <img src="../../Ambcom-logo@2x.png" className={classes.navbarLogo} />
+          </Link>
           <IconButton aria-label="open-drawer" edge="start" onClick={handleDrawerToggle} className={classes.menuButton}>
             <MenuIcon className={classes.hamburgerIcon} />
           </IconButton>
@@ -246,7 +254,9 @@ export default function Navigation() {
         <Hidden xsDown implementation="css">
           <AppBar className={classes.appBar} elevation={1}>
             <Toolbar>
-              <img src="../../logo.png" className={classes.navbarLogo} />
+              <Link href="/">
+                <img src="../../Ambcom-logo@2x.png" className={classes.navbarLogo} />
+              </Link>
               <div className={classes.navbarLinks}>
                 {navigationItems.map((navItem) => {
                   if (typeof navItem.sublinks === "undefined") {
