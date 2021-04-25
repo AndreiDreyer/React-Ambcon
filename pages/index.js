@@ -42,8 +42,8 @@ const useStyles = makeStyles((theme) => ({
   },
   introText: {
     lineHeight: "1.7rem",
-    fontFamily: '"Poppins", sans-serif',
-    fontWeight: 300,
+    fontFamily: '"Lato", sans-serif',
+    fontWeight: 400,
     color: "#2C3539",
     fontSize: "1.2rem",
   },
@@ -53,13 +53,13 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   titleText: {
-    fontFamily: '"Poppins", sans-serif',
-    fontWeight: 500,
+    fontFamily: '"Lato", sans-serif',
+    fontWeight: 600,
     fontSize: "2rem",
   },
   servicesTitle: {
-    fontFamily: '"Poppins", sans-serif',
-    fontWeight: 500,
+    fontFamily: '"Lato", sans-serif',
+    fontWeight: 600,
     fontSize: "1.7rem",
   },
 }));
@@ -89,23 +89,6 @@ const services = [
 
 export default function Home() {
   const classes = useStyles();
-  const theme = useTheme();
-
-  const sm = useMediaQuery(theme.breakpoints.down("sm"));
-  const md = useMediaQuery(theme.breakpoints.down("md"));
-
-  const ipad = useMediaQuery(theme.breakpoints.down(769));
-  const ipadUp = useMediaQuery(theme.breakpoints.up(768));
-
-  const numCols = () => {
-    if (ipad && ipadUp) {
-      return 2;
-    } else if (sm) {
-      return 1;
-    } else {
-      return 4;
-    }
-  };
 
   return (
     <div className={classes.root}>

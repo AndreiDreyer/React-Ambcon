@@ -57,23 +57,42 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const footerNavItems = [
+  {
+    text: "Contacts",
+    url: "/contacts/",
+  },
+  {
+    text: "Insurance",
+    url: "/insurance",
+  },
+  {
+    text: "Details",
+    url: "/details",
+  },
+];
+
+const serviceItems = [
+  {
+    text: "Full Load",
+    url: "/services/full-load",
+  },
+  {
+    text: "Consolidated Load",
+    url: "/services/consolidated-load",
+  },
+  {
+    text: "Clearing",
+    url: "/services/clearing",
+  },
+  {
+    text: "Procurement",
+    url: "/services/procurement",
+  },
+];
+
 export default function Footer() {
   const classes = useStyles();
-
-  const footerNavItems = [
-    {
-      text: "Contacts",
-      url: "/contacts/",
-    },
-    {
-      text: "Insurance",
-      url: "/insurance",
-    },
-    {
-      text: "Details",
-      url: "/details",
-    },
-  ];
 
   return (
     <div className={classes.root}>
@@ -82,18 +101,22 @@ export default function Footer() {
           <div className={clsx(classes.footerColumns, classes.footerLinks)}>
             <h2>Links</h2>
             {footerNavItems.map((footerNavItem) => (
-              <Link href={footerNavItem.url} key={footerNavItem.text}>
-                <p>{footerNavItem.text}</p>
-              </Link>
+              <p key={footerNavItem.text}>
+                <Link href={footerNavItem.url} key={footerNavItem.text}>
+                  {footerNavItem.text}
+                </Link>
+              </p>
             ))}
           </div>
         </Grid>
         <Grid item xs={12} sm={4}>
           <div className={clsx(classes.footerColumns, classes.footerColumnTwo)}>
             <h2>Solutions</h2>
-            <p>Full Loads</p>
-            <p>Consolodation Loads</p>
-            <p>Clearing</p>
+            {serviceItems.map((serviceItem) => (
+              <p key={serviceItem.text}>
+                <Link href={serviceItem.url}>{serviceItem.text}</Link>
+              </p>
+            ))}
           </div>
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -119,7 +142,9 @@ export default function Footer() {
               <EmailIcon className={classes.footerIcon} />
 
               <div className={classes.footerInfo}>
-                <p>matt@ambconlogistics.com</p>
+                <p>
+                  <a href="mailto:matt@ambconlogistics.com">matt@ambconlogistics.com</a>
+                </p>
               </div>
             </div>
           </div>
