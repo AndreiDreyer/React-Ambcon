@@ -2,7 +2,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 export const customTheme = createMuiTheme({
   typography: {
-    fontFamily: "'Lato', sans-serif",
+    fontFamily: "'Lato', 'Roboto', sans-serif",
   },
   breakpoints: {
     values: {
