@@ -38,9 +38,7 @@ function FolderList() {
                 <Link href="/services/consolidated-load" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
-                            <Avatar>
-                                <ViewQuiltIcon />
-                            </Avatar>
+                            <Avatar src="../consolidated-load@2x-1.png"/>
                         </ListItemAvatar>
                         <ListItemText primary="Consolidation Loads" />
                         </ListItem>
@@ -51,9 +49,7 @@ function FolderList() {
                 <Link href="/services/clearing" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
-                        <Avatar>
-                            <AirportShuttleIcon />
-                        </Avatar>
+                            <Avatar src="../clearing@2x-1.png"/>
                         </ListItemAvatar>
                         <ListItemText primary="Clearing" />
                     </ListItem>
@@ -64,9 +60,7 @@ function FolderList() {
                 <Link href="/services/procurement" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
-                        <Avatar>
-                            <TrackChangesIcon />
-                        </Avatar>
+                            <Avatar src="../procurement@2x-1.png"/>
                         </ListItemAvatar>
                         <ListItemText primary="Procurement / Facilitation Service" />
                     </ListItem>
@@ -77,9 +71,7 @@ function FolderList() {
                 <Link href="/services/full-load" className={classes.link}>
                     <ListItem>
                         <ListItemAvatar>
-                        <Avatar>
-                            <LocalShippingIcon />
-                        </Avatar>
+                            <Avatar src="../full-load@2x-1.png"/>
                         </ListItemAvatar>
                         <ListItemText primary="Full Load" />
                     </ListItem>

@@ -43,7 +43,7 @@ export default function Quote() {
       <div className={classes.page}>
       <div className={classes.bannerDiv}>
                   <Navigation />
-                  <img src="../Desktop - 7@2x.png" className={classes.bannerDiv} />
+                  <img src="../Desktop - 2@2x.png" className={classes.bannerDiv} />
               </div>
         <div className={classes.quoteForm}>
           <QuoteForm />
