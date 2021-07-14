@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { ReCaptcha } from "react-recaptcha-google";
 import scriptLoader from "react-async-script-loader";
 
-const RECAPTCHA_KEY = process.env.RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY;
 var captcha = false;
 
 function ReCaptchaComp() {
