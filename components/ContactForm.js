@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import ReCaptchaComp from "../components/ReCaptchaComp";
+// import ReCaptchaComp from "../components/ReCaptchaComp";
 import { withWidth } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -278,9 +278,9 @@ function ContactForm(props) {
             error={touched.feedback && !!errors.feedback}
           />
         </div>
-        <div className={classes.cComp}>
+        {/* <div className={classes.cComp}>
           <ReCaptchaComp></ReCaptchaComp>
-        </div>
+        </div> */}
       </div>
       <Button className={classes.button} type="submit" color="primary">
         Send Mail
